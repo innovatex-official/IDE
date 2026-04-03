@@ -337,7 +337,7 @@ export class ParentProcess extends Process {
     return cp.fork(path.join(__dirname, "entry"), {
       env: {
         ...process.env,
-        CODE_SERVER_PARENT_PID: process.pid.toString(),
+        INNOVATEX_IDE_PARENT_PID: process.pid.toString(),
         NODE_EXEC_PATH: process.execPath,
       },
       stdio: ["pipe", "pipe", "pipe", "ipc"],
@@ -374,8 +374,8 @@ export class ParentProcess extends Process {
  * Process wrapper.
  */
 export const wrapper =
-  typeof process.env.CODE_SERVER_PARENT_PID !== "undefined"
-    ? new ChildProcess(parseInt(process.env.CODE_SERVER_PARENT_PID))
+  typeof process.env.INNOVATEX_IDE_PARENT_PID !== "undefined"
+    ? new ChildProcess(parseInt(process.env.INNOVATEX_IDE_PARENT_PID))
     : new ParentProcess(require("../../package.json").version)
 
 export function isChild(proc: ChildProcess | ParentProcess): proc is ChildProcess {

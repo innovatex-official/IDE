@@ -235,7 +235,7 @@ jobs:
           name: linux-x64-package
       - run: tar -xzf package.tar.gz
 
-      - run: CODE_SERVER_TEST_ENTRY=./release npm run test:e2e
+      - run: INNOVATEX_IDE_TEST_ENTRY=./release npm run test:e2e
       - uses: actions/upload-artifact@v7
         if: always()
         with:
@@ -285,7 +285,7 @@ jobs:
       - run: tar -xzf package.tar.gz
 
       - run: ~/.cache/caddy/caddy start --config ./ci/Caddyfile
-      - run: CODE_SERVER_TEST_ENTRY=./release npm run test:e2e:proxy
+      - run: INNOVATEX_IDE_TEST_ENTRY=./release npm run test:e2e:proxy
       - run: ~/.cache/caddy/caddy stop --config ./ci/Caddyfile
         if: always()
       - uses: actions/upload-artifact@v7

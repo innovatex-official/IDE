@@ -46,11 +46,11 @@ describe("parser", () => {
   beforeEach(() => {
     delete process.env.LOG_LEVEL
     delete process.env.PASSWORD
-    delete process.env.CS_DISABLE_FILE_DOWNLOADS
-    delete process.env.CS_DISABLE_GETTING_STARTED_OVERRIDE
-    delete process.env.CODE_SERVER_RECONNECTION_GRACE_TIME
+    delete process.env.INNOVATEX_DISABLE_FILE_DOWNLOADS
+    delete process.env.INNOVATEX_DISABLE_GETTING_STARTED_OVERRIDE
+    delete process.env.INNOVATEX_IDE_RECONNECTION_GRACE_TIME
     delete process.env.VSCODE_PROXY_URI
-    delete process.env.CS_DISABLE_PROXY
+    delete process.env.INNOVATEX_DISABLE_PROXY
     console.log = jest.fn()
   })
 
@@ -389,8 +389,8 @@ describe("parser", () => {
     expect(process.env.GITHUB_TOKEN).toBe(undefined)
   })
 
-  it("should use env var CS_DISABLE_FILE_DOWNLOADS", async () => {
-    process.env.CS_DISABLE_FILE_DOWNLOADS = "1"
+  it("should use env var INNOVATEX_DISABLE_FILE_DOWNLOADS", async () => {
+    process.env.INNOVATEX_DISABLE_FILE_DOWNLOADS = "1"
     const args = parse([])
     expect(args).toEqual({})
 
@@ -401,8 +401,8 @@ describe("parser", () => {
     })
   })
 
-  it("should use env var CS_DISABLE_FILE_DOWNLOADS set to true", async () => {
-    process.env.CS_DISABLE_FILE_DOWNLOADS = "true"
+  it("should use env var INNOVATEX_DISABLE_FILE_DOWNLOADS set to true", async () => {
+    process.env.INNOVATEX_DISABLE_FILE_DOWNLOADS = "true"
     const args = parse([])
     expect(args).toEqual({})
 
@@ -413,8 +413,8 @@ describe("parser", () => {
     })
   })
 
-  it("should use env var CS_DISABLE_GETTING_STARTED_OVERRIDE", async () => {
-    process.env.CS_DISABLE_GETTING_STARTED_OVERRIDE = "1"
+  it("should use env var INNOVATEX_DISABLE_GETTING_STARTED_OVERRIDE", async () => {
+    process.env.INNOVATEX_DISABLE_GETTING_STARTED_OVERRIDE = "1"
     const args = parse([])
     expect(args).toEqual({})
 
@@ -425,8 +425,8 @@ describe("parser", () => {
     })
   })
 
-  it("should use env var CS_DISABLE_GETTING_STARTED_OVERRIDE set to true", async () => {
-    process.env.CS_DISABLE_GETTING_STARTED_OVERRIDE = "true"
+  it("should use env var INNOVATEX_DISABLE_GETTING_STARTED_OVERRIDE set to true", async () => {
+    process.env.INNOVATEX_DISABLE_GETTING_STARTED_OVERRIDE = "true"
     const args = parse([])
     expect(args).toEqual({})
 
@@ -437,8 +437,8 @@ describe("parser", () => {
     })
   })
 
-  it("should use env var CS_DISABLE_PROXY", async () => {
-    process.env.CS_DISABLE_PROXY = "1"
+  it("should use env var INNOVATEX_DISABLE_PROXY", async () => {
+    process.env.INNOVATEX_DISABLE_PROXY = "1"
     const args = parse([])
     expect(args).toEqual({})
 
@@ -449,8 +449,8 @@ describe("parser", () => {
     })
   })
 
-  it("should use env var CS_DISABLE_PROXY set to true", async () => {
-    process.env.CS_DISABLE_PROXY = "true"
+  it("should use env var INNOVATEX_DISABLE_PROXY set to true", async () => {
+    process.env.INNOVATEX_DISABLE_PROXY = "true"
     const args = parse([])
     expect(args).toEqual({})
 
@@ -461,8 +461,8 @@ describe("parser", () => {
     })
   })
 
-  it("should use env var CODE_SERVER_RECONNECTION_GRACE_TIME for reconnection grace time", async () => {
-    process.env.CODE_SERVER_RECONNECTION_GRACE_TIME = "86400"
+  it("should use env var INNOVATEX_IDE_RECONNECTION_GRACE_TIME for reconnection grace time", async () => {
+    process.env.INNOVATEX_IDE_RECONNECTION_GRACE_TIME = "86400"
     const args = parse([])
     expect(args).toEqual({})
 
@@ -471,7 +471,7 @@ describe("parser", () => {
       ...defaults,
       "reconnection-grace-time": "86400",
     })
-    delete process.env.CODE_SERVER_RECONNECTION_GRACE_TIME
+    delete process.env.INNOVATEX_IDE_RECONNECTION_GRACE_TIME
   })
 
   it("should error if password passed in", () => {
@@ -857,8 +857,8 @@ describe("bindAddrFromArgs", () => {
     expect(actual).toStrictEqual(expected)
   })
 
-  it("should use process.env.CODE_SERVER_HOST if set", () => {
-    const [setValue, resetValue] = useEnv("CODE_SERVER_HOST")
+  it("should use process.env.INNOVATEX_IDE_HOST if set", () => {
+    const [setValue, resetValue] = useEnv("INNOVATEX_IDE_HOST")
     setValue("innovatex")
 
     const args: UserProvidedArgs = {}
@@ -878,8 +878,8 @@ describe("bindAddrFromArgs", () => {
     resetValue()
   })
 
-  it("should use the args.host over process.env.CODE_SERVER_HOST if both set", () => {
-    const [setValue, resetValue] = useEnv("CODE_SERVER_HOST")
+  it("should use the args.host over process.env.INNOVATEX_IDE_HOST if both set", () => {
+    const [setValue, resetValue] = useEnv("INNOVATEX_IDE_HOST")
     setValue("innovatex")
 
     const args: UserProvidedArgs = {

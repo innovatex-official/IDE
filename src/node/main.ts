@@ -53,7 +53,7 @@ export const runCodeCli = async (args: DefaultedArgs): Promise<void> => {
   logger.debug("Running Code CLI")
   try {
     // See vscode.loadVSCode for more on this jank.
-    process.env.CODE_SERVER_PARENT_PID = process.pid.toString()
+    process.env.INNOVATEX_IDE_PARENT_PID = process.pid.toString()
     let modPath = path.join(vsRootPath, "out/server-main.js")
     if (os.platform() === "win32") {
       // On Windows, absolute paths of ESM modules must be a valid file URI.

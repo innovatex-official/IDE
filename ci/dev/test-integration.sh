@@ -4,7 +4,7 @@ set -euo pipefail
 help() {
   echo >&2 "  You can build the release with 'KEEP_MODULES=1 npm run release'"
   echo >&2 "  Or you can pass in a custom path."
-  echo >&2 "  CODE_SERVER_PATH='/var/tmp/innovatex/innovatex-ide/bin/innovatex-ide' npm run test:integration"
+  echo >&2 "  INNOVATEX_IDE_PATH='/var/tmp/innovatex/innovatex-ide/bin/innovatex-ide' npm run test:integration"
 }
 
 # Make sure a innovatex-ide release works. You can pass in the path otherwise it
@@ -18,10 +18,10 @@ main() {
   source ./ci/lib.sh
 
   local path="$RELEASE_PATH/bin/innovatex-ide"
-  if [[ ! ${CODE_SERVER_PATH-} ]]; then
-    echo "Set CODE_SERVER_PATH to test another build of innovatex-ide"
+  if [[ ! ${INNOVATEX_IDE_PATH-} ]]; then
+    echo "Set INNOVATEX_IDE_PATH to test another build of innovatex-ide"
   else
-    path="$CODE_SERVER_PATH"
+    path="$INNOVATEX_IDE_PATH"
   fi
 
   echo "Running tests with innovatex-ide binary: '$path'"
@@ -33,7 +33,7 @@ main() {
     exit 1
   fi
 
-  CODE_SERVER_PATH="$path" ./test/node_modules/.bin/jest "$@" --coverage=false --testRegex "./test/integration" --testPathIgnorePatterns "./test/integration/fixtures"
+  INNOVATEX_IDE_PATH="$path" ./test/node_modules/.bin/jest "$@" --coverage=false --testRegex "./test/integration" --testPathIgnorePatterns "./test/integration/fixtures"
 }
 
 main "$@"

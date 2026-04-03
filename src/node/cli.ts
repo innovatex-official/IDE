@@ -178,7 +178,7 @@ export const options: Options<Required<UserProvidedArgs>> = {
     type: "string",
     description:
       "Adds a suffix to the cookie. This can prevent a collision of cookies for subdomains, making them explixit. \n" +
-      "Without this flag, no suffix is used. This can also be set with CODE_SERVER_COOKIE_SUFFIX set to any string.",
+      "Without this flag, no suffix is used. This can also be set with INNOVATEX_IDE_COOKIE_SUFFIX set to any string.",
   },
   "disable-file-downloads": {
     type: "boolean",
@@ -550,7 +550,7 @@ export async function setDefaults(cliArgs: UserProvidedArgs, configArgs?: Config
   if (!args["session-socket"]) {
     args["session-socket"] = path.join(args["user-data-dir"], "innovatex-ide-ipc.sock")
   }
-  process.env.CODE_SERVER_SESSION_SOCKET = args["session-socket"]
+  process.env.INNOVATEX_IDE_SESSION_SOCKET = args["session-socket"]
 
   // --verbose takes priority over --log and --log takes priority over the
   // environment variable.
@@ -631,26 +631,26 @@ export async function setDefaults(cliArgs: UserProvidedArgs, configArgs?: Config
     usingEnvPassword = false
   }
 
-  if (process.env.CODE_SERVER_COOKIE_SUFFIX) {
-    args["cookie-suffix"] = process.env.CODE_SERVER_COOKIE_SUFFIX
+  if (process.env.INNOVATEX_IDE_COOKIE_SUFFIX) {
+    args["cookie-suffix"] = process.env.INNOVATEX_IDE_COOKIE_SUFFIX
   }
 
   if (process.env.GITHUB_TOKEN) {
     args["github-auth"] = process.env.GITHUB_TOKEN
   }
 
-  if (process.env.CODE_SERVER_RECONNECTION_GRACE_TIME) {
-    args["reconnection-grace-time"] = process.env.CODE_SERVER_RECONNECTION_GRACE_TIME
+  if (process.env.INNOVATEX_IDE_RECONNECTION_GRACE_TIME) {
+    args["reconnection-grace-time"] = process.env.INNOVATEX_IDE_RECONNECTION_GRACE_TIME
   }
 
-  if (process.env.CODE_SERVER_IDLE_TIMEOUT_SECONDS) {
-    if (isNaN(Number(process.env.CODE_SERVER_IDLE_TIMEOUT_SECONDS))) {
-      logger.info("CODE_SERVER_IDLE_TIMEOUT_SECONDS must be a number")
+  if (process.env.INNOVATEX_IDE_IDLE_TIMEOUT_SECONDS) {
+    if (isNaN(Number(process.env.INNOVATEX_IDE_IDLE_TIMEOUT_SECONDS))) {
+      logger.info("INNOVATEX_IDE_IDLE_TIMEOUT_SECONDS must be a number")
     }
-    if (Number(process.env.CODE_SERVER_IDLE_TIMEOUT_SECONDS) <= 60) {
+    if (Number(process.env.INNOVATEX_IDE_IDLE_TIMEOUT_SECONDS) <= 60) {
       throw new Error("--idle-timeout-seconds must be greater than 60 seconds.")
     }
-    args["idle-timeout-seconds"] = Number(process.env.CODE_SERVER_IDLE_TIMEOUT_SECONDS)
+    args["idle-timeout-seconds"] = Number(process.env.INNOVATEX_IDE_IDLE_TIMEOUT_SECONDS)
   }
 
   // Ensure they're not readable by child processes.
@@ -720,11 +720,11 @@ interface ConfigArgs extends UserProvidedArgs {
 /**
  * Reads the innovatex-ide yaml config file and returns it as Args.
  *
- * @param configPath Read the config from configPath instead of $CODE_SERVER_CONFIG or the default.
+ * @param configPath Read the config from configPath instead of $INNOVATEX_IDE_CONFIG or the default.
  */
 export async function readConfigFile(configPath?: string): Promise<ConfigArgs> {
   if (!configPath) {
-    configPath = process.env.CODE_SERVER_CONFIG
+    configPath = process.env.INNOVATEX_IDE_CONFIG
     if (!configPath) {
       configPath = path.join(paths.config, "config.yaml")
     }
@@ -811,8 +811,8 @@ export function bindAddrFromArgs(addr: Addr, args: UserProvidedArgs): Addr {
   if (args["bind-addr"]) {
     addr = parseBindAddr(args["bind-addr"])
   }
-  if (process.env.CODE_SERVER_HOST) {
-    addr.host = process.env.CODE_SERVER_HOST
+  if (process.env.INNOVATEX_IDE_HOST) {
+    addr.host = process.env.INNOVATEX_IDE_HOST
   }
   if (args.host) {
     addr.host = args.host

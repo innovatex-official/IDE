@@ -44,7 +44,7 @@ export class InnovateXIDE {
     private readonly args: string[],
     private readonly env: NodeJS.ProcessEnv,
     private _workspaceDir: Promise<string> | string | undefined,
-    private readonly entry = process.env.CODE_SERVER_TEST_ENTRY || ".",
+    private readonly entry = process.env.INNOVATEX_IDE_TEST_ENTRY || ".",
   ) {
     this.logger = logger.named(name)
   }

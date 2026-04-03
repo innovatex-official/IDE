@@ -104,8 +104,8 @@ Index: code-server/lib/vscode/src/vs/base/common/processes.ts
  		/^VSCODE_(?!(PORTABLE|SHELL_LOGIN|ENV_REPLACE|ENV_APPEND|ENV_PREPEND)).+$/,
  		/^SNAP(|_.*)$/,
  		/^GDK_PIXBUF_.+$/,
-+		/^CODE_SERVER_.+$/,
-+		/^CS_.+$/,
++		/^INNOVATEX_IDE_.+$/,
++		/^INNOVATEX_.+$/,
  	];
  	const envKeys = Object.keys(env);
  	envKeys
@@ -301,7 +301,7 @@ Index: code-server/lib/vscode/src/server-main.ts
 +// make it difficult to import.
 +export { loadCodeWithNls as loadCodeWithNls };
 +
-+if (!process.env.CODE_SERVER_PARENT_PID) {
++if (!process.env.INNOVATEX_IDE_PARENT_PID) {
 +	start();
 +}
 Index: code-server/lib/vscode/src/vs/workbench/browser/parts/dialogs/dialog.ts

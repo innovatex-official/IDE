@@ -2,8 +2,8 @@ Add support for telemetry endpoint
 
 To test:
 1. Create a mock API using [RequestBin](https://requestbin.io/) or [Beeceptor](https://beeceptor.com/)
-2. Run code-server with `CS_TELEMETRY_URL` set: 
-  i.e. `CS_TELEMETRY_URL="https://requestbin.io/1ebub9z1" ./code-server-<version>-macos-amd64/bin/code-server`
+2. Run code-server with `INNOVATEX_TELEMETRY_URL` set: 
+  i.e. `INNOVATEX_TELEMETRY_URL="https://requestbin.io/1ebub9z1" ./code-server-<version>-macos-amd64/bin/code-server`
   NOTE: it has to be a production build.
 3. Load code-server in browser an do things (i.e. open a file)
 4. Refresh RequestBin and you should see logs
@@ -165,7 +165,7 @@ Index: code-server/lib/vscode/src/vs/platform/product/common/product.ts
  			recommendationsUrl: "",
 -		})
 +		}),
-+		telemetryEndpoint: env.CS_TELEMETRY_URL || product.telemetryEndpoint || "https://v1.telemetry.coder.com/track",
++		telemetryEndpoint: env.INNOVATEX_TELEMETRY_URL || product.telemetryEndpoint || "https://v1.telemetry.coder.com/track",
  	});
  }
  
