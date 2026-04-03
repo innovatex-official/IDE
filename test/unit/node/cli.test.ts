@@ -493,7 +493,14 @@ describe("parser", () => {
   })
 
   it("should filter proxy domains", async () => {
-    const args = parse(["--proxy-domain", "*.innovatex.com", "--proxy-domain", "innovatex.com", "--proxy-domain", "innovatex.org"])
+    const args = parse([
+      "--proxy-domain",
+      "*.innovatex.com",
+      "--proxy-domain",
+      "innovatex.com",
+      "--proxy-domain",
+      "innovatex.org",
+    ])
     expect(args).toEqual({
       "proxy-domain": ["*.innovatex.com", "innovatex.com", "innovatex.org"],
     })
@@ -573,7 +580,14 @@ describe("parser", () => {
 
   it("should set proxy uri to first domain", async () => {
     await setDefaults(
-      parse(["--proxy-domain", "*.innovatex.com", "--proxy-domain", "innovatex.com", "--proxy-domain", "innovatex.org"]),
+      parse([
+        "--proxy-domain",
+        "*.innovatex.com",
+        "--proxy-domain",
+        "innovatex.com",
+        "--proxy-domain",
+        "innovatex.org",
+      ]),
     )
     expect(process.env.VSCODE_PROXY_URI).toEqual("//{{port}}.innovatex.com")
   })
@@ -581,7 +595,14 @@ describe("parser", () => {
   it("should not override existing proxy uri", async () => {
     process.env.VSCODE_PROXY_URI = "foo"
     await setDefaults(
-      parse(["--proxy-domain", "*.innovatex.com", "--proxy-domain", "innovatex.com", "--proxy-domain", "innovatex.org"]),
+      parse([
+        "--proxy-domain",
+        "*.innovatex.com",
+        "--proxy-domain",
+        "innovatex.com",
+        "--proxy-domain",
+        "innovatex.org",
+      ]),
     )
     expect(process.env.VSCODE_PROXY_URI).toEqual("foo")
   })

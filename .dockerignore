@@ -1,3 +1,31 @@
+# Ignore everything by default
 **
-!release-packages
-!ci
+
+# Allow essential build files
+!package*.json
+!.gitmodules
+!patches/
+!ci/
+!src/
+!out/
+!lib/
+!tsconfig.json
+!README.md
+!LICENSE
+!ThirdPartyNotices.txt
+!flake.nix
+
+# Exclude large/wasteful patterns
+node_modules/
+.git/
+.cache/
+.tours/
+test/
+release/
+release-packages/
+release-gcp/
+release-images/
+**/CHANGELOG.md
+**/*.rej
+**/*.orig
+**/*.bak
