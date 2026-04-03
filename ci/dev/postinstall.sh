@@ -42,8 +42,9 @@ main() {
   fi
 
   if [[ ! ${SKIP_SUBMODULE_DEPS-} ]]; then
-    # Fix all .ts scripts to use experimental-strip-types
+    # Fix all .ts scripts and gulp to use experimental-strip-types
     sed -i '' 's/node \(build\/[a-zA-Z0-9\/._-]*\.ts\)/node --experimental-strip-types \1/g' lib/vscode/package.json
+    sed -i '' 's/node --max-old-space-size=8192/node --experimental-strip-types --max-old-space-size=8192/g' lib/vscode/package.json
     export VSCODE_SKIP_NODE_VERSION_CHECK=1
     install-deps lib/vscode
   fi

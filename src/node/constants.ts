@@ -3,6 +3,8 @@ import type { JSONSchemaForNPMPackageJsonFiles } from "@schemastore/package"
 import * as os from "os"
 import * as path from "path"
 
+import * as fs from "fs"
+
 export function getPackageJson(relativePath: string): JSONSchemaForNPMPackageJsonFiles {
   let pkg = {}
   try {
@@ -14,8 +16,23 @@ export function getPackageJson(relativePath: string): JSONSchemaForNPMPackageJso
   return pkg
 }
 
+function getVSCodeRoot(): string {
+  const root = path.resolve(__dirname, "../..")
+  const libDir = path.join(root, "lib")
+  try {
+    const files = fs.readdirSync(libDir)
+    const builtDir = files.find((f) => f.startsWith("vscode-reh-web-"))
+    if (builtDir) {
+      return path.join(libDir, builtDir)
+    }
+  } catch (error) {
+    // Ignore error and use default.
+  }
+  return path.join(root, "lib/vscode")
+}
+
 export const rootPath = path.resolve(__dirname, "../..")
-export const vsRootPath = path.join(rootPath, "lib/vscode")
+export const vsRootPath = getVSCodeRoot()
 const PACKAGE_JSON = "package.json"
 const pkg = getPackageJson(`${rootPath}/${PACKAGE_JSON}`)
 const codePkg = getPackageJson(`${vsRootPath}/${PACKAGE_JSON}`) || { version: "0.0.0" }
