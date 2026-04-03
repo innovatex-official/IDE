@@ -1,4 +1,4 @@
-import { logger } from "@innovatex/logger"
+import { logger } from "@coder/logger"
 import { Emitter } from "../../../src/common/emitter"
 import { mockLogger } from "../../utils/helpers"
 

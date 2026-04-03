@@ -8,10 +8,10 @@ package.json and delete the last notification storage item.
 3. Click "Clear site data"
 4. See update notification
 
-Index: innovatex-ide/lib/vscode/src/vs/workbench/browser/client.ts
+Index: code-server/lib/vscode/src/vs/workbench/browser/client.ts
 ===================================================================
---- innovatex-ide.orig/lib/vscode/src/vs/workbench/browser/client.ts
-+++ innovatex-ide/lib/vscode/src/vs/workbench/browser/client.ts
+--- code-server.orig/lib/vscode/src/vs/workbench/browser/client.ts
++++ code-server/lib/vscode/src/vs/workbench/browser/client.ts
 @@ -1,10 +1,16 @@
  import { Disposable } from "../../base/common/lifecycle.js";
  import { localize } from '../../nls.js';
@@ -20,7 +20,7 @@ Index: innovatex-ide/lib/vscode/src/vs/workbench/browser/client.ts
 +import { IProductService } from '../../platform/product/common/productService.js';
 +import { IStorageService, StorageScope, StorageTarget } from '../../platform/storage/common/storage.js';
  
- export class InnovateXIDEClient extends Disposable {
+ export class CodeServerClient extends Disposable {
  	constructor (
 +		@ILogService private logService: ILogService,
  		@INotificationService private notificationService: INotificationService,
@@ -29,7 +29,7 @@ Index: innovatex-ide/lib/vscode/src/vs/workbench/browser/client.ts
  	) {
  		super();
  	}
-@@ -71,5 +77,59 @@ export class InnovateXIDEClient extends Di
+@@ -71,5 +77,59 @@ export class CodeServerClient extends Di
  				},
  			});
  		}
@@ -71,7 +71,7 @@ Index: innovatex-ide/lib/vscode/src/vs/workbench/browser/client.ts
 +
 +			this.notificationService.notify({
 +				severity: Severity.Info,
-+				message: `[innovatex-ide v${json.latest}](https://github.com/cdr/innovatex-ide/releases/tag/v${json.latest}) has been released!`,
++				message: `[code-server v${json.latest}](https://github.com/cdr/code-server/releases/tag/v${json.latest}) has been released!`,
 +			});
 +		};
 +
@@ -89,10 +89,10 @@ Index: innovatex-ide/lib/vscode/src/vs/workbench/browser/client.ts
 +		updateLoop();
  	}
  }
-Index: innovatex-ide/lib/vscode/src/vs/base/common/product.ts
+Index: code-server/lib/vscode/src/vs/base/common/product.ts
 ===================================================================
---- innovatex-ide.orig/lib/vscode/src/vs/base/common/product.ts
-+++ innovatex-ide/lib/vscode/src/vs/base/common/product.ts
+--- code-server.orig/lib/vscode/src/vs/base/common/product.ts
++++ code-server/lib/vscode/src/vs/base/common/product.ts
 @@ -67,6 +67,7 @@ export type ExtensionVirtualWorkspaceSup
  export interface IProductConfiguration {
  	readonly codeServerVersion?: string
@@ -109,10 +109,10 @@ Index: innovatex-ide/lib/vscode/src/vs/base/common/product.ts
  	};
  
  	readonly mcpGallery?: {
-Index: innovatex-ide/lib/vscode/src/vs/server/node/webClientServer.ts
+Index: code-server/lib/vscode/src/vs/server/node/webClientServer.ts
 ===================================================================
---- innovatex-ide.orig/lib/vscode/src/vs/server/node/webClientServer.ts
-+++ innovatex-ide/lib/vscode/src/vs/server/node/webClientServer.ts
+--- code-server.orig/lib/vscode/src/vs/server/node/webClientServer.ts
++++ code-server/lib/vscode/src/vs/server/node/webClientServer.ts
 @@ -341,6 +341,7 @@ export class WebClientServer {
  		const productConfiguration: Partial<Mutable<IProductConfiguration>> = {
  			codeServerVersion: this._productService.codeServerVersion,
@@ -121,15 +121,15 @@ Index: innovatex-ide/lib/vscode/src/vs/server/node/webClientServer.ts
  			embedderIdentifier: 'server-distro',
  			extensionsGallery: this._productService.extensionsGallery,
  		};
-Index: innovatex-ide/lib/vscode/src/vs/server/node/serverEnvironmentService.ts
+Index: code-server/lib/vscode/src/vs/server/node/serverEnvironmentService.ts
 ===================================================================
---- innovatex-ide.orig/lib/vscode/src/vs/server/node/serverEnvironmentService.ts
-+++ innovatex-ide/lib/vscode/src/vs/server/node/serverEnvironmentService.ts
+--- code-server.orig/lib/vscode/src/vs/server/node/serverEnvironmentService.ts
++++ code-server/lib/vscode/src/vs/server/node/serverEnvironmentService.ts
 @@ -16,6 +16,8 @@ import { join } from '../../base/common/
  import { ProtocolConstants } from '../../base/parts/ipc/common/ipc.net.js';
  
  export const serverOptions: OptionDescriptions<Required<ServerParsedArgs>> = {
-+	/* ----- innovatex-ide ----- */
++	/* ----- code-server ----- */
 +	'disable-update-check': { type: 'boolean' },
  
  	/* ----- server setup ----- */
@@ -138,7 +138,7 @@ Index: innovatex-ide/lib/vscode/src/vs/server/node/serverEnvironmentService.ts
  };
  
  export interface ServerParsedArgs {
-+	/* ----- innovatex-ide ----- */
++	/* ----- code-server ----- */
 +	'disable-update-check'?: boolean;
  
  	/* ----- server setup ----- */

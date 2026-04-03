@@ -1,4 +1,4 @@
-import { logger } from "@innovatex/logger"
+import { logger } from "@coder/logger"
 import path from "path"
 import * as semver from "semver"
 import { mockLogger } from "../../utils/helpers"

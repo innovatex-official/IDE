@@ -1,4 +1,4 @@
-import { field, logger } from "@innovatex/logger"
+import { field, logger } from "@coder/logger"
 import http from "http"
 import * as os from "os"
 import * as path from "path"

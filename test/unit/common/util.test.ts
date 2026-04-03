@@ -1,4 +1,4 @@
-import { logger } from "@innovatex/logger"
+import { logger } from "@coder/logger"
 import { JSDOM } from "jsdom"
 import * as util from "../../../src/common/util"
 import { mockLogger } from "../../utils/helpers"

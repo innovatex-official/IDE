@@ -1,23 +1,25 @@
-# InnovateX IDE
+# **InnovateX IDE**
 
-**InnovateX IDE** is a VS-Code based IDE for students to code end-to-end perfectly. 
+**InnovateX IDE** is an integrated development environment based on VS Code, optimized for browser access. It is designed to provide students with a consistent, end-to-end development environment.
+
 Developed by **Suryanshu Nabheet**.
 
 ## Features
-- End-to-end coding support for students.
-- Accessible from anywhere in the browser.
-- High performance and clean codebase.
-- Based on VS Code (fork of innovatex-ide).
+- Scalable, end-to-end development infrastructure for educational institutions.
+- High-performance browser-based IDE accessible from any node.
+- Architectural integrity based on the VS Code core.
+- Production-grade codebase for professional development.
 
-## Quick Start (Local)
-1. Clone the repository.
-2. Run `npm install`.
-3. Run `npm run watch` or `npm run build` and then `npm start`.
+## Installation and Execution
+1. Clone the repository to the local environment.
+2. Install dependencies by executing `npm install`.
+3. Compile the source code using `npm run build`.
+4. Initiate the server by executing `npm start`.
 
-## Deployment (Render)
-You can deploy InnovateX IDE to Render effortlessly. Click the button below to get started:
+## Deployment
+InnovateX IDE is configured for deployment on the Render platform as a containerized service. 
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/innovatex-official/IDE.git)
 
 ## License
-MIT
+Provided under the MIT License.

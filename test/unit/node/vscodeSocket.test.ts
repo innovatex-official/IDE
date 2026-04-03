@@ -1,4 +1,4 @@
-import { logger } from "@innovatex/logger"
+import { logger } from "@coder/logger"
 import * as app from "../../../src/node/app"
 import { EditorSessionManager, makeEditorSessionManagerServer } from "../../../src/node/vscodeSocket"
 import { clean, tmpdir, listenOn, mockLogger } from "../../utils/helpers"

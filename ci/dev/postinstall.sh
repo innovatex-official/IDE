@@ -35,14 +35,16 @@ main() {
 
   # Apply patches if not already applied
   if [[ ! -f lib/vscode/.patched ]]; then
-    echo "Applying patches to lib/vscode..."
     for patch in $(cat patches/series); do
-      patch -p1 -d lib/vscode < "patches/$patch"
+      patch -p1 < "patches/$patch"
     done
     touch lib/vscode/.patched
   fi
 
   if [[ ! ${SKIP_SUBMODULE_DEPS-} ]]; then
+    # Fix all .ts scripts to use experimental-strip-types
+    sed -i '' 's/node \(build\/[a-zA-Z0-9\/._-]*\.ts\)/node --experimental-strip-types \1/g' lib/vscode/package.json
+    export VSCODE_SKIP_NODE_VERSION_CHECK=1
     install-deps lib/vscode
   fi
 }

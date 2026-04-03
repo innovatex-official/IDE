@@ -1,5 +1,5 @@
-# InnovateX IDE: The Next-Gen Coding Environment for Students
-# Built with Suryanshu Nabheet's vision.
+# InnovateX IDE: The VS Code Based Coding Environment for Students
+# Developed By Suryanshu Nabheet.
 
 FROM node:22-bullseye AS builder
 

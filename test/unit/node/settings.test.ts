@@ -1,4 +1,4 @@
-import { logger } from "@innovatex/logger"
+import { logger } from "@coder/logger"
 import { promises as fs } from "fs"
 import path from "path"
 import { SettingsProvider, CoderSettings } from "../../../src/node/settings"

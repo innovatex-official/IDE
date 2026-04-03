@@ -1,4 +1,4 @@
-import { logger } from "@innovatex/logger"
+import { logger } from "@coder/logger"
 import { promises } from "fs"
 import * as http from "http"
 import * as https from "https"

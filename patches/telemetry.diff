@@ -2,16 +2,16 @@ Add support for telemetry endpoint
 
 To test:
 1. Create a mock API using [RequestBin](https://requestbin.io/) or [Beeceptor](https://beeceptor.com/)
-2. Run innovatex-ide with `CS_TELEMETRY_URL` set: 
-  i.e. `CS_TELEMETRY_URL="https://requestbin.io/1ebub9z1" ./innovatex-ide-<version>-macos-amd64/bin/innovatex-ide`
+2. Run code-server with `CS_TELEMETRY_URL` set: 
+  i.e. `CS_TELEMETRY_URL="https://requestbin.io/1ebub9z1" ./code-server-<version>-macos-amd64/bin/code-server`
   NOTE: it has to be a production build.
-3. Load innovatex-ide in browser an do things (i.e. open a file)
+3. Load code-server in browser an do things (i.e. open a file)
 4. Refresh RequestBin and you should see logs
 
-Index: innovatex-ide/lib/vscode/src/vs/server/node/serverServices.ts
+Index: code-server/lib/vscode/src/vs/server/node/serverServices.ts
 ===================================================================
---- innovatex-ide.orig/lib/vscode/src/vs/server/node/serverServices.ts
-+++ innovatex-ide/lib/vscode/src/vs/server/node/serverServices.ts
+--- code-server.orig/lib/vscode/src/vs/server/node/serverServices.ts
++++ code-server/lib/vscode/src/vs/server/node/serverServices.ts
 @@ -4,6 +4,7 @@
   *--------------------------------------------------------------------------------------------*/
  
@@ -54,10 +54,10 @@ Index: innovatex-ide/lib/vscode/src/vs/server/node/serverServices.ts
  			disposables.add(toDisposable(() => oneDsAppender?.flush())); // Ensure the AI appender is disposed so that it flushes remaining data
  		}
  
-Index: innovatex-ide/lib/vscode/src/vs/server/node/telemetryClient.ts
+Index: code-server/lib/vscode/src/vs/server/node/telemetryClient.ts
 ===================================================================
 --- /dev/null
-+++ innovatex-ide/lib/vscode/src/vs/server/node/telemetryClient.ts
++++ code-server/lib/vscode/src/vs/server/node/telemetryClient.ts
 @@ -0,0 +1,71 @@
 +import { AppInsightsCore, IExtendedTelemetryItem, ITelemetryItem } from '@microsoft/1ds-core-js';
 +import * as https from 'https';
@@ -130,10 +130,10 @@ Index: innovatex-ide/lib/vscode/src/vs/server/node/telemetryClient.ts
 +		} catch (error) {}
 +	}
 +}
-Index: innovatex-ide/lib/vscode/src/vs/server/node/webClientServer.ts
+Index: code-server/lib/vscode/src/vs/server/node/webClientServer.ts
 ===================================================================
---- innovatex-ide.orig/lib/vscode/src/vs/server/node/webClientServer.ts
-+++ innovatex-ide/lib/vscode/src/vs/server/node/webClientServer.ts
+--- code-server.orig/lib/vscode/src/vs/server/node/webClientServer.ts
++++ code-server/lib/vscode/src/vs/server/node/webClientServer.ts
 @@ -348,6 +348,8 @@ export class WebClientServer {
  				scope: vscodeBase + '/',
  				path: rootBase + '/_static/out/browser/serviceWorker.js',
@@ -143,10 +143,10 @@ Index: innovatex-ide/lib/vscode/src/vs/server/node/webClientServer.ts
  			embedderIdentifier: 'server-distro',
  			extensionsGallery: this._productService.extensionsGallery,
  		};
-Index: innovatex-ide/lib/vscode/src/vs/base/common/product.ts
+Index: code-server/lib/vscode/src/vs/base/common/product.ts
 ===================================================================
---- innovatex-ide.orig/lib/vscode/src/vs/base/common/product.ts
-+++ innovatex-ide/lib/vscode/src/vs/base/common/product.ts
+--- code-server.orig/lib/vscode/src/vs/base/common/product.ts
++++ code-server/lib/vscode/src/vs/base/common/product.ts
 @@ -74,6 +74,7 @@ export interface IProductConfiguration {
  		readonly path: string;
  		readonly scope: string;
@@ -155,17 +155,17 @@ Index: innovatex-ide/lib/vscode/src/vs/base/common/product.ts
  
  	readonly version: string;
  	readonly date?: string;
-Index: innovatex-ide/lib/vscode/src/vs/platform/product/common/product.ts
+Index: code-server/lib/vscode/src/vs/platform/product/common/product.ts
 ===================================================================
---- innovatex-ide.orig/lib/vscode/src/vs/platform/product/common/product.ts
-+++ innovatex-ide/lib/vscode/src/vs/platform/product/common/product.ts
+--- code-server.orig/lib/vscode/src/vs/platform/product/common/product.ts
++++ code-server/lib/vscode/src/vs/platform/product/common/product.ts
 @@ -58,7 +58,8 @@ else if (globalThis._VSCODE_PRODUCT_JSON
  			resourceUrlTemplate: "https://open-vsx.org/vscode/asset/{publisher}/{name}/{version}/Microsoft.VisualStudio.Code.WebResources/{path}",
  			controlUrl: "",
  			recommendationsUrl: "",
 -		})
 +		}),
-+		telemetryEndpoint: env.CS_TELEMETRY_URL || product.telemetryEndpoint || "https://v1.telemetry.innovatex.com/track",
++		telemetryEndpoint: env.CS_TELEMETRY_URL || product.telemetryEndpoint || "https://v1.telemetry.coder.com/track",
  	});
  }
  

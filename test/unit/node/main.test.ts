@@ -10,7 +10,7 @@ jest.mock("../../../src/node/i18n", () => ({
 }))
 
 // Mock logger to avoid console output during tests
-jest.mock("@innovatex/logger", () => ({
+jest.mock("@coder/logger", () => ({
   logger: {
     info: jest.fn(),
     debug: jest.fn(),

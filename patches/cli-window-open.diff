@@ -1,22 +1,22 @@
 Make opening files/folders from the terminal only open in the current instance
 
-Previously they would open in every innovatex-ide tab/window.
+Previously they would open in every code-server tab/window.
 
 To test:
 
-1. Run innovatex-ide
-2. Open innovatex-ide
+1. Run code-server
+2. Open code-server
 3. Open terminal
-4. Open another innovatex-ide window
+4. Open another code-server window
 5. Run node ./out/node/entry.js with a file or directory argument
 
 The file or directory should only open from the instance attached to that
 terminal.
 
-Index: innovatex-ide/lib/vscode/src/vs/workbench/contrib/terminal/browser/remoteTerminalBackend.ts
+Index: code-server/lib/vscode/src/vs/workbench/contrib/terminal/browser/remoteTerminalBackend.ts
 ===================================================================
---- innovatex-ide.orig/lib/vscode/src/vs/workbench/contrib/terminal/browser/remoteTerminalBackend.ts
-+++ innovatex-ide/lib/vscode/src/vs/workbench/contrib/terminal/browser/remoteTerminalBackend.ts
+--- code-server.orig/lib/vscode/src/vs/workbench/contrib/terminal/browser/remoteTerminalBackend.ts
++++ code-server/lib/vscode/src/vs/workbench/contrib/terminal/browser/remoteTerminalBackend.ts
 @@ -108,10 +108,14 @@ class RemoteTerminalBackend extends Base
  			}
  			const reqId = e.reqId;

@@ -21,7 +21,7 @@ webview host is separate by default but we serve on the same host).
 To test, open a few types of webviews (images, markdown, extension details, etc).
 
 Make sure to update the hash. To do so:
-1. run innovatex-ide 
+1. run code-server 
 2. open any webview (i.e. preview Markdown)
 3. see error in console and copy hash
 
@@ -37,10 +37,10 @@ Upstream added a check to ensure parent authority is encoded into the webview
 origin. Since our webview origin is the parent authority, we can bypass this
 check.
 
-Index: innovatex-ide/lib/vscode/src/vs/workbench/services/environment/browser/environmentService.ts
+Index: code-server/lib/vscode/src/vs/workbench/services/environment/browser/environmentService.ts
 ===================================================================
---- innovatex-ide.orig/lib/vscode/src/vs/workbench/services/environment/browser/environmentService.ts
-+++ innovatex-ide/lib/vscode/src/vs/workbench/services/environment/browser/environmentService.ts
+--- code-server.orig/lib/vscode/src/vs/workbench/services/environment/browser/environmentService.ts
++++ code-server/lib/vscode/src/vs/workbench/services/environment/browser/environmentService.ts
 @@ -220,7 +220,7 @@ export class BrowserWorkbenchEnvironment
  
  	@memoize
@@ -50,10 +50,10 @@ Index: innovatex-ide/lib/vscode/src/vs/workbench/services/environment/browser/en
  			|| this.productService.webviewContentExternalBaseUrlTemplate
  			|| 'https://{{uuid}}.vscode-cdn.net/{{quality}}/{{commit}}/out/vs/workbench/contrib/webview/browser/pre/';
  
-Index: innovatex-ide/lib/vscode/src/vs/server/node/webClientServer.ts
+Index: code-server/lib/vscode/src/vs/server/node/webClientServer.ts
 ===================================================================
---- innovatex-ide.orig/lib/vscode/src/vs/server/node/webClientServer.ts
-+++ innovatex-ide/lib/vscode/src/vs/server/node/webClientServer.ts
+--- code-server.orig/lib/vscode/src/vs/server/node/webClientServer.ts
++++ code-server/lib/vscode/src/vs/server/node/webClientServer.ts
 @@ -361,6 +361,7 @@ export class WebClientServer {
  		const workbenchWebConfiguration = {
  			remoteAuthority,
@@ -62,10 +62,10 @@ Index: innovatex-ide/lib/vscode/src/vs/server/node/webClientServer.ts
  			_wrapWebWorkerExtHostInIframe,
  			developmentOptions: { enableSmokeTestDriver: this._environmentService.args['enable-smoke-test-driver'] ? true : undefined, logLevel: this._logService.getLevel() },
  			settingsSyncOptions: !this._environmentService.isBuilt && this._environmentService.args['enable-sync'] ? { enabled: true } : undefined,
-Index: innovatex-ide/lib/vscode/src/vs/workbench/contrib/webview/browser/pre/index.html
+Index: code-server/lib/vscode/src/vs/workbench/contrib/webview/browser/pre/index.html
 ===================================================================
---- innovatex-ide.orig/lib/vscode/src/vs/workbench/contrib/webview/browser/pre/index.html
-+++ innovatex-ide/lib/vscode/src/vs/workbench/contrib/webview/browser/pre/index.html
+--- code-server.orig/lib/vscode/src/vs/workbench/contrib/webview/browser/pre/index.html
++++ code-server/lib/vscode/src/vs/workbench/contrib/webview/browser/pre/index.html
 @@ -5,7 +5,7 @@
  	<meta charset="UTF-8">
  
@@ -97,10 +97,10 @@ Index: innovatex-ide/lib/vscode/src/vs/workbench/contrib/webview/browser/pre/ind
  				if (!crypto.subtle) {
  					// cannot validate, not running in a secure context
  					throw new Error(`'crypto.subtle' is not available so webviews will not work. This is likely because the editor is not running in a secure context (https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts).`);
-Index: innovatex-ide/lib/vscode/src/vs/workbench/services/extensions/worker/webWorkerExtensionHostIframe.html
+Index: code-server/lib/vscode/src/vs/workbench/services/extensions/worker/webWorkerExtensionHostIframe.html
 ===================================================================
---- innovatex-ide.orig/lib/vscode/src/vs/workbench/services/extensions/worker/webWorkerExtensionHostIframe.html
-+++ innovatex-ide/lib/vscode/src/vs/workbench/services/extensions/worker/webWorkerExtensionHostIframe.html
+--- code-server.orig/lib/vscode/src/vs/workbench/services/extensions/worker/webWorkerExtensionHostIframe.html
++++ code-server/lib/vscode/src/vs/workbench/services/extensions/worker/webWorkerExtensionHostIframe.html
 @@ -4,7 +4,7 @@
  		<meta http-equiv="Content-Security-Policy" content="
  			default-src 'none';

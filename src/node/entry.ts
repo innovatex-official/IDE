@@ -1,4 +1,4 @@
-import { logger } from "@innovatex/logger"
+import { logger } from "@coder/logger"
 import { optionDescriptions, parse, readConfigFile, setDefaults, shouldOpenInExistingInstance } from "./cli"
 import { getVersionString, getVersionJsonString } from "./constants"
 import { openInExistingInstance, runInnovateXIDE, runCodeCli, shouldSpawnCliProcess } from "./main"

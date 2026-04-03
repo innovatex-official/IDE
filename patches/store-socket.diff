@@ -1,20 +1,20 @@
 Store the IPC socket with workspace metadata.
 
-This lets us use it to open files inside innovatex-ide from outside of
-innovatex-ide.
+This lets us use it to open files inside code-server from outside of
+code-server.
 
 To test this:
-1. run innovatex-ide
-2. open file outside of innovatex-ide i.e. `innovatex-ide <path-to-file`
+1. run code-server
+2. open file outside of code-server i.e. `code-server <path-to-file`
 
-It should open in your existing innovatex-ide instance.
+It should open in your existing code-server instance.
 
 When the extension host is terminated, the socket is unregistered.
 
-Index: innovatex-ide/lib/vscode/src/vs/workbench/api/node/extHostExtensionService.ts
+Index: code-server/lib/vscode/src/vs/workbench/api/node/extHostExtensionService.ts
 ===================================================================
---- innovatex-ide.orig/lib/vscode/src/vs/workbench/api/node/extHostExtensionService.ts
-+++ innovatex-ide/lib/vscode/src/vs/workbench/api/node/extHostExtensionService.ts
+--- code-server.orig/lib/vscode/src/vs/workbench/api/node/extHostExtensionService.ts
++++ code-server/lib/vscode/src/vs/workbench/api/node/extHostExtensionService.ts
 @@ -3,6 +3,7 @@
   *  Licensed under the MIT License. See License.txt in the project root for license information.
   *--------------------------------------------------------------------------------------------*/
@@ -84,10 +84,10 @@ Index: innovatex-ide/lib/vscode/src/vs/workbench/api/node/extHostExtensionServic
  		// Do this when extension service exists, but extensions are not being activated yet.
  		const configProvider = await this._extHostConfiguration.getConfigProvider();
  		await connectProxyResolver(this._extHostWorkspace, configProvider, this, this._logService, this._mainThreadTelemetryProxy, this._initData, this._store);
-Index: innovatex-ide/lib/vscode/src/vs/workbench/api/node/extensionHostProcess.ts
+Index: code-server/lib/vscode/src/vs/workbench/api/node/extensionHostProcess.ts
 ===================================================================
---- innovatex-ide.orig/lib/vscode/src/vs/workbench/api/node/extensionHostProcess.ts
-+++ innovatex-ide/lib/vscode/src/vs/workbench/api/node/extensionHostProcess.ts
+--- code-server.orig/lib/vscode/src/vs/workbench/api/node/extensionHostProcess.ts
++++ code-server/lib/vscode/src/vs/workbench/api/node/extensionHostProcess.ts
 @@ -3,6 +3,7 @@
   *  Licensed under the MIT License. See License.txt in the project root for license information.
   *--------------------------------------------------------------------------------------------*/
