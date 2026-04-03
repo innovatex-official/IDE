@@ -10,7 +10,7 @@ fix-bin-script() {
   local script="lib/vscode-reh-web-$VSCODE_TARGET/bin/$1"
   sed -i.bak "s/@@VERSION@@/$(vscode_version)/g" "$script"
   sed -i.bak "s/@@COMMIT@@/$BUILD_SOURCEVERSION/g" "$script"
-  sed -i.bak "s/@@APPNAME@@/code-server/g" "$script"
+  sed -i.bak "s/@@APPNAME@@/InnovateX IDE/g" "$script"
 
   # Fix Node path on Darwin and Linux.
   # We do not want expansion here; this text should make it to the file as-is.
@@ -71,37 +71,23 @@ main() {
   {
     "enableTelemetry": true,
     "quality": "stable",
-    "codeServerVersion": "$VERSION",
-    "nameShort": "code-server",
-    "nameLong": "code-server",
-    "applicationName": "code-server",
-    "dataFolderName": ".code-server",
-    "win32MutexName": "codeserver",
-    "licenseUrl": "https://github.com/coder/code-server/blob/main/LICENSE",
-    "win32DirName": "code-server",
-    "win32NameVersion": "code-server",
-    "win32AppUserModelId": "coder.code-server",
-    "win32ShellNameShort": "c&ode-server",
-    "darwinBundleIdentifier": "com.coder.code.server",
-    "linuxIconName": "com.coder.code.server",
-    "reportIssueUrl": "https://github.com/coder/code-server/issues/new",
-    "documentationUrl": "https://go.microsoft.com/fwlink/?LinkID=533484#vscode",
-    "keyboardShortcutsUrlMac": "https://go.microsoft.com/fwlink/?linkid=832143",
-    "keyboardShortcutsUrlLinux": "https://go.microsoft.com/fwlink/?linkid=832144",
-    "keyboardShortcutsUrlWin": "https://go.microsoft.com/fwlink/?linkid=832145",
-    "introductoryVideosUrl": "https://go.microsoft.com/fwlink/?linkid=832146",
-    "tipsAndTricksUrl": "https://go.microsoft.com/fwlink/?linkid=852118",
-    "newsletterSignupUrl": "https://www.research.net/r/vsc-newsletter",
-    "linkProtectionTrustedDomains": [
-      "https://open-vsx.org"
-    ],
-    "trustedExtensionAuthAccess": [
-      "vscode.git", "vscode.github",
-      "github.vscode-pull-request-github",
-      "github.copilot", "github.copilot-chat"
-    ],
+    "innovatexVersion": "$VERSION",
+    "nameShort": "InnovateX IDE",
+    "nameLong": "InnovateX IDE",
+    "applicationName": "innovatex-ide",
+    "dataFolderName": ".innovatex-ide",
+    "win32MutexName": "innovatexide",
+    "licenseUrl": "https://github.com/innovatex-official/IDE/blob/main/LICENSE",
+    "win32DirName": "InnovateX IDE",
+    "win32NameVersion": "InnovateX IDE",
+    "win32AppUserModelId": "innovatex.ide",
+    "win32ShellNameShort": "InnovateX &IDE",
+    "darwinBundleIdentifier": "com.innovatex.ide",
+    "linuxIconName": "com.innovatex.ide",
+    "reportIssueUrl": "https://github.com/innovatex-official/IDE/issues/new",
+    "documentationUrl": "https://github.com/innovatex-official/IDE",
     "aiConfig": {
-      "ariaKey": "code-server"
+      "ariaKey": "innovatex-ide"
     }
   }
 EOF

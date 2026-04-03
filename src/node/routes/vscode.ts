@@ -19,7 +19,7 @@ export const router = express.Router()
 export const wsRouter = WsRouter()
 
 /**
- * The API of VS Code's web client server.  code-server delegates requests to VS
+ * The API of VS Code's web client server.  innovatex-ide delegates requests to VS
  * Code here.
  *
  * @see ../../../lib/vscode/src/vs/server/node/server.main.ts:72

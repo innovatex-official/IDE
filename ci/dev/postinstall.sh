@@ -28,8 +28,20 @@ main() {
 
   install-deps test
   install-deps test/e2e/extensions/test-extension
-  # We don't need these when running the integration tests
-  # so you can pass SKIP_SUBMODULE_DEPS
+  if [[ ! -f lib/vscode/package.json ]]; then
+    echo "lib/vscode/package.json is missing; updating submodules..."
+    git submodule update --init --recursive --depth 1
+  fi
+
+  # Apply patches if not already applied
+  if [[ ! -f lib/vscode/.patched ]]; then
+    echo "Applying patches to lib/vscode..."
+    for patch in $(cat patches/series); do
+      patch -p1 -d lib/vscode < "patches/$patch"
+    done
+    touch lib/vscode/.patched
+  fi
+
   if [[ ! ${SKIP_SUBMODULE_DEPS-} ]]; then
     install-deps lib/vscode
   fi

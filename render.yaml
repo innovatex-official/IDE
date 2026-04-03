@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: innovatex-ide
+    env: node
+    buildCommand: "VSCODE_SKIP_NODE_VERSION_CHECK=1 NODE_OPTIONS='--experimental-strip-types --max-old-space-size=4096' npm install && npm run build"
+    startCommand: "VERSION=1.0.0 node out/node/entry.js --host 0.0.0.0 --port $PORT --auth none"
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: PASSWORD
+        # Leave empty for no password (--auth none) or set a password and remove --auth none from startCommand
+        value: ""
+      - key: VSCODE_SKIP_NODE_VERSION_CHECK
+        value: "1"
+    disk:
+      name: innovatex-data
+      mountPath: /root/.local/share/innovatex-ide
+      sizeGB: 1

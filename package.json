@@ -1,13 +1,13 @@
 {
-  "name": "code-server",
+  "name": "innovatex-ide",
   "license": "MIT",
-  "version": "0.0.0",
-  "description": "Run VS Code on a remote server.",
-  "homepage": "https://github.com/coder/code-server",
+  "version": "1.0.0",
+  "description": "InnovateX IDE: A VS-Code based IDE for students to code end-to-end perfectly. Built by Suryanshu Nabheet.",
+  "homepage": "https://github.com/innovatex-official/IDE",
   "bugs": {
-    "url": "https://github.com/coder/code-server/issues"
+    "url": "https://github.com/innovatex-official/IDE/issues"
   },
-  "repository": "https://github.com/coder/code-server",
+  "repository": "https://github.com/innovatex-official/IDE",
   "scripts": {
     "clean": "./ci/build/clean.sh",
     "build": "./ci/build/build-code-server.sh",
@@ -31,7 +31,7 @@
     "lint:scripts": "./ci/dev/lint-scripts.sh",
     "lint:ts": "eslint --max-warnings=0 --fix $(git ls-files '*.ts' '*.js' | grep -v 'lib/vscode')",
     "test": "echo 'Run npm run test:unit or npm run test:e2e' && exit 1",
-    "watch": "VSCODE_DEV=1 VSCODE_IPC_HOOK_CLI= NODE_OPTIONS='--max_old_space_size=32384 --trace-warnings' ts-node ./ci/dev/watch.ts",
+    "watch": "VSCODE_DEV=1 VSCODE_IPC_HOOK_CLI= VSCODE_SKIP_NODE_VERSION_CHECK=1 NODE_OPTIONS='--max_old_space_size=32384 --trace-warnings' node --experimental-strip-types ./ci/dev/watch.ts",
     "icons": "./ci/dev/gen_icons.sh"
   },
   "main": "out/node/entry.js",

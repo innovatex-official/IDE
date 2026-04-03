@@ -56,7 +56,7 @@ export interface UserProvidedCodeArgs {
   "session-socket"?: string
   "cookie-suffix"?: string
   "link-protection-trusted-domains"?: string[]
-  // locale is used by both VS Code and code-server.
+  // locale is used by both VS Code and innovatex-ide.
   locale?: string
 }
 
@@ -168,7 +168,7 @@ export const options: Options<Required<UserProvidedArgs>> = {
   "disable-update-check": {
     type: "boolean",
     description:
-      "Disable update check. Without this flag, code-server checks every 6 hours against the latest github release and \n" +
+      "Disable update check. Without this flag, innovatex-ide checks every 6 hours against the latest github release and \n" +
       "then notifies you once every week that a new release is available.",
   },
   "session-socket": {
@@ -548,7 +548,7 @@ export async function setDefaults(cliArgs: UserProvidedArgs, configArgs?: Config
   }
 
   if (!args["session-socket"]) {
-    args["session-socket"] = path.join(args["user-data-dir"], "code-server-ipc.sock")
+    args["session-socket"] = path.join(args["user-data-dir"], "innovatex-ide-ipc.sock")
   }
   process.env.CODE_SERVER_SESSION_SOCKET = args["session-socket"]
 
@@ -678,7 +678,7 @@ export async function setDefaults(cliArgs: UserProvidedArgs, configArgs?: Config
   args["proxy-domain"] = finalProxies
 
   if (!args["app-name"]) {
-    args["app-name"] = "code-server"
+    args["app-name"] = "InnovateX IDE"
   }
 
   args._ = getResolvedPathsFromArgs(args)
@@ -706,7 +706,7 @@ export function getResolvedPathsFromArgs(args: UserProvidedArgs): string[] {
  * - cert: false
  */
 export function defaultConfigFile(password: string): string {
-  return `bind-addr: 127.0.0.1:8080
+  return `bind-addr: 0.0.0.0:8080
 auth: password
 password: ${password}
 cert: false
@@ -718,7 +718,7 @@ interface ConfigArgs extends UserProvidedArgs {
 }
 
 /**
- * Reads the code-server yaml config file and returns it as Args.
+ * Reads the innovatex-ide yaml config file and returns it as Args.
  *
  * @param configPath Read the config from configPath instead of $CODE_SERVER_CONFIG or the default.
  */
@@ -792,7 +792,7 @@ function parseBindAddr(bindAddr: string): Addr {
     host: u.hostname,
     // With the http scheme 80 will be dropped so assume it's 80 if missing.
     // This means --bind-addr <addr> without a port will default to 80 as well
-    // and not the code-server default.
+    // and not the innovatex-ide default.
     port: u.port ? parseInt(u.port, 10) : 80,
   }
 }
@@ -861,7 +861,7 @@ export const shouldOpenInExistingInstance = async (
   // If these flags are set then assume the user is trying to open in an
   // existing instance since these flags have no effect otherwise.  That means
   // if there is no existing instance we should error rather than falling back
-  // to spawning code-server normally.
+  // to spawning innovatex-ide normally.
   const openInFlagCount = ["reuse-window", "new-window"].reduce((prev, cur) => {
     return args[cur as keyof UserProvidedArgs] ? prev + 1 : prev
   }, 0)
@@ -869,14 +869,14 @@ export const shouldOpenInExistingInstance = async (
     logger.debug("Found --reuse-window or --new-window")
     const socketPath = await client.getConnectedSocketPath(paths[0])
     if (!socketPath) {
-      throw new Error(`No opened code-server instances found to handle ${paths[0]}`)
+      throw new Error(`No opened innovatex-ide instances found to handle ${paths[0]}`)
     }
     return socketPath
   }
 
-  // It's possible the user is trying to spawn another instance of code-server.
+  // It's possible the user is trying to spawn another instance of innovatex-ide.
   // 1. Check if any unrelated flags are set (this should only run when
-  //    code-server is invoked exactly like this: `code-server my-file`).
+  //    innovatex-ide is invoked exactly like this: `innovatex-ide my-file`).
   // 2. That a file or directory was passed.
   // 3. That the socket is active.
   // 4. That an instance exists to handle the path (implied by #3).
@@ -886,7 +886,7 @@ export const shouldOpenInExistingInstance = async (
     }
     const socketPath = await client.getConnectedSocketPath(paths[0])
     if (socketPath) {
-      logger.debug("Found existing code-server socket")
+      logger.debug("Found existing innovatex-ide socket")
       return socketPath
     }
   }
