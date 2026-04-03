@@ -1,6 +1,22 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
+
+- [innovatex-ide](#innovatex-ide)
+  - [Highlights](#highlights)
+  - [Requirements](#requirements)
+  - [Getting started](#getting-started)
+  - [Questions?](#questions)
+  - [Want to help?](#want-to-help)
+  - [Hiring](#hiring)
+  - [For Teams](#for-teams)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # innovatex-ide
 
-[!["GitHub Discussions"](https://img.shields.io/badge/%20GitHub-%20Discussions-gray.svg?longCache=true&logo=github&colorB=purple)](https://github.com/innovatex-official/IDE/discussions) [!["Join us on Slack"](https://img.shields.io/badge/join-us%20on%20slack-gray.svg?longCache=true&logo=slack&colorB=brightgreen)](https://github.com/innovatex-official/IDE/community) [![Twitter Follow](https://img.shields.io/twitter/follow/InnovateX OfficialHQ?label=%40InnovateX OfficialHQ&style=social)](https://twitter.com/innovatexhq) [![Discord](https://img.shields.io/discord/747933592273027093)](https://discord.com/invite/innovatex) [![codecov](https://codecov.io/gh/innovatex/innovatex-ide/branch/main/graph/badge.svg?token=5iM9farjnC)](https://codecov.io/gh/innovatex/innovatex-ide) [![See latest](https://img.shields.io/static/v1?label=Docs&message=see%20latest&color=blue)](https://github.com/innovatex-official/IDE/docs/innovatex-ide/latest)
+[!["GitHub Discussions"](https://img.shields.io/badge/%20GitHub-%20Discussions-gray.svg?longCache=true&logo=github&colorB=purple)](https://github.com/innovatex-official/IDE/discussions) [!["Join us on Slack"](https://img.shields.io/badge/join-us%20on%20slack-gray.svg?longCache=true&logo=slack&colorB=brightgreen)](https://github.com/innovatex-official/IDE/community) [![Twitter Follow](https://img.shields.io/twitter/follow/InnovateXHQ?label=%40InnovateXHQ&style=social)](https://twitter.com/innovatexhq) [![Discord](https://img.shields.io/discord/747933592273027093)](https://discord.com/invite/innovatex) [![codecov](https://codecov.io/gh/innovatex/innovatex-ide/branch/main/graph/badge.svg?token=5iM9farjnC)](https://codecov.io/gh/innovatex/innovatex-ide) [![See latest](https://img.shields.io/static/v1?label=Docs&message=see%20latest&color=blue)](https://github.com/innovatex-official/IDE/docs/innovatex-ide/latest)
 
 Run [VS Code](https://github.com/Microsoft/vscode) on any machine anywhere and
 access it in the browser.
@@ -73,7 +89,7 @@ details.
 
 ## Hiring
 
-Interested in [working at InnovateX Official](https://github.com/innovatex-official/IDE/careers)? Check out [our open
+Interested in [working at InnovateX](https://github.com/innovatex-official/IDE/careers)? Check out [our open
 positions](https://github.com/innovatex-official/IDE/careers#openings)!
 
 ## For Teams

@@ -1,3 +1,17 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
+
+- [Collaboration](#collaboration)
+  - [Code sharing using Duckly](#code-sharing-using-duckly)
+    - [Installing the Duckly Extension](#installing-the-duckly-extension)
+    - [Sharing with Duckly](#sharing-with-duckly)
+  - [Code sharing using CodeTogether](#code-sharing-using-codetogether)
+    - [Installing the CodeTogether extension](#installing-the-codetogether-extension)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Collaboration
 
 With third-party extensions, you can use innovatex-ide to collaborate with other developers in real time.

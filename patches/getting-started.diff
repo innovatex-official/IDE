@@ -24,7 +24,7 @@ Index: code-server/lib/vscode/src/vs/workbench/contrib/welcomeGettingStarted/bro
  import { OpenFileFolderAction, OpenFolderAction, OpenFolderViaWorkspaceAction } from '../../../browser/actions/workspaceActions.js';
  import { EditorPane } from '../../../browser/parts/editor/editorPane.js';
 -import { WorkbenchStateContext } from '../../../common/contextkeys.js';
-+import { IsEnabledInnovateX OfficialGettingStarted, WorkbenchStateContext } from '../../../common/contextkeys.js';
++import { IsEnabledInnovateXGettingStarted, WorkbenchStateContext } from '../../../common/contextkeys.js';
  import { IEditorOpenContext, IEditorSerializer } from '../../../common/editor.js';
  import { IWebviewElement, IWebviewService } from '../../webview/browser/webview.js';
  import './gettingStartedColors.js';
@@ -32,9 +32,9 @@ Index: code-server/lib/vscode/src/vs/workbench/contrib/welcomeGettingStarted/bro
  			$('p.subtitle.description', {}, localize({ key: 'gettingStarted.editingEvolved', comment: ['Shown as subtitle on the Welcome page.'] }, "Editing evolved"))
  		);
  
-+		let gettingStartedInnovateX Official: HTMLElement = $('.header', {});
-+		if (this.contextService.contextMatchesRules(IsEnabledInnovateX OfficialGettingStarted)) {
-+			gettingStartedInnovateX Official = $('.gettingStartedCategory', {},
++		let gettingStartedInnovateX: HTMLElement = $('.header', {});
++		if (this.contextService.contextMatchesRules(IsEnabledInnovateXGettingStarted)) {
++			gettingStartedInnovateX = $('.gettingStartedCategory', {},
 +				$('h2', {
 +					style: 'margin-bottom: 12px',
 +				}, 'Next Up'),
@@ -64,14 +64,14 @@ Index: code-server/lib/vscode/src/vs/workbench/contrib/welcomeGettingStarted/bro
 +							'font-size: 13px',
 +							'color: #dcdee2',
 +						].join(';'),
-+					}, 'Provision software development environments on your infrastructure with InnovateX Official.'),
++					}, 'Provision software development environments on your infrastructure with InnovateX.'),
 +					$('p', {
 +						style: [
 +							'margin-top: 8px',
 +							'font-size: 13px',
 +							'color: #dcdee2',
 +						].join(';'),
-+					}, 'InnovateX Official is a self-service portal which provisions via Terraform—Linux, macOS, Windows, x86, ARM, and, of course, Kubernetes based infrastructure.'),
++					}, 'InnovateX is a self-service portal which provisions via Terraform—Linux, macOS, Windows, x86, ARM, and, of course, Kubernetes based infrastructure.'),
 +					$('p', {
 +						style: [
 +							'margin: 0',
@@ -105,8 +105,8 @@ Index: code-server/lib/vscode/src/vs/workbench/contrib/welcomeGettingStarted/bro
  				recentList.setLimit(5);
  				reset(leftColumn, startList.getDomElement(), recentList.getDomElement());
  			}
-+			if (this.contextService.contextMatchesRules(IsEnabledInnovateX OfficialGettingStarted)) {
-+				prepend(rightColumn, gettingStartedInnovateX Official)
++			if (this.contextService.contextMatchesRules(IsEnabledInnovateXGettingStarted)) {
++				prepend(rightColumn, gettingStartedInnovateX)
 +			}
  		};
  
@@ -140,9 +140,9 @@ Index: code-server/lib/vscode/src/vs/workbench/browser/web.api.ts
  	readonly isEnabledFileUploads?: boolean
  
 +	/**
-+	 * Whether to use InnovateX Official's custom Getting Started text.
++	 * Whether to use InnovateX's custom Getting Started text.
 +	 */
-+	readonly isEnabledInnovateX OfficialGettingStarted?: boolean
++	readonly isEnabledInnovateXGettingStarted?: boolean
 +
  	//#endregion
  
@@ -155,9 +155,9 @@ Index: code-server/lib/vscode/src/vs/workbench/services/environment/browser/envi
  	readonly isEnabledFileUploads?: boolean;
  
  	/**
-+	 * Enable InnovateX Official's custom getting started text.
++	 * Enable InnovateX's custom getting started text.
 +	 */
-+	readonly isEnabledInnovateX OfficialGettingStarted?: boolean;
++	readonly isEnabledInnovateXGettingStarted?: boolean;
 +
 +	/**
  	 * Gets whether a resolver extension is expected for the environment.
@@ -167,11 +167,11 @@ Index: code-server/lib/vscode/src/vs/workbench/services/environment/browser/envi
  		return this.options.isEnabledFileUploads;
  	}
  
-+	get isEnabledInnovateX OfficialGettingStarted(): boolean {
-+		if (typeof this.options.isEnabledInnovateX OfficialGettingStarted === "undefined") {
-+			throw new Error('isEnabledInnovateX OfficialGettingStarted was not provided to the browser');
++	get isEnabledInnovateXGettingStarted(): boolean {
++		if (typeof this.options.isEnabledInnovateXGettingStarted === "undefined") {
++			throw new Error('isEnabledInnovateXGettingStarted was not provided to the browser');
 +		}
-+		return this.options.isEnabledInnovateX OfficialGettingStarted;
++		return this.options.isEnabledInnovateXGettingStarted;
 +	}
 +
  	@memoize
@@ -205,7 +205,7 @@ Index: code-server/lib/vscode/src/vs/server/node/webClientServer.ts
  			userDataPath: this._environmentService.userDataPath,
  			isEnabledFileDownloads: !this._environmentService.args['disable-file-downloads'],
  			isEnabledFileUploads: !this._environmentService.args['disable-file-uploads'],
-+			isEnabledInnovateX OfficialGettingStarted: !this._environmentService.args['disable-getting-started-override'],
++			isEnabledInnovateXGettingStarted: !this._environmentService.args['disable-getting-started-override'],
  			_wrapWebWorkerExtHostInIframe,
  			developmentOptions: { enableSmokeTestDriver: this._environmentService.args['enable-smoke-test-driver'] ? true : undefined, logLevel: this._logService.getLevel() },
  			settingsSyncOptions: !this._environmentService.isBuilt && this._environmentService.args['enable-sync'] ? { enabled: true } : undefined,
@@ -218,7 +218,7 @@ Index: code-server/lib/vscode/src/vs/workbench/browser/contextkeys.ts
  import { IContextKeyService, IContextKey, setConstant as setConstantContextKey } from '../../platform/contextkey/common/contextkey.js';
  import { IsMacContext, IsLinuxContext, IsWindowsContext, IsWebContext, IsMacNativeContext, IsDevelopmentContext, IsIOSContext, ProductQualityContext, IsMobileContext } from '../../platform/contextkey/common/contextkeys.js';
 -import { SplitEditorsVertically, InEditorZenModeContext, AuxiliaryBarVisibleContext, SideBarVisibleContext, PanelAlignmentContext, PanelMaximizedContext, PanelVisibleContext, EmbedderIdentifierContext, EditorTabsVisibleContext, IsMainEditorCenteredLayoutContext, MainEditorAreaVisibleContext, DirtyWorkingCopiesContext, EmptyWorkspaceSupportContext, EnterMultiRootWorkspaceSupportContext, HasWebFileSystemAccess, IsMainWindowFullscreenContext, OpenFolderWorkspaceSupportContext, RemoteNameContext, VirtualWorkspaceContext, WorkbenchStateContext, WorkspaceFolderCountContext, PanelPositionContext, TemporaryWorkspaceContext, TitleBarVisibleContext, TitleBarStyleContext, IsAuxiliaryWindowFocusedContext, ActiveEditorGroupEmptyContext, ActiveEditorGroupIndexContext, ActiveEditorGroupLastContext, ActiveEditorGroupLockedContext, MultipleEditorGroupsContext, EditorsVisibleContext, AuxiliaryBarMaximizedContext, InAutomationContext, IsSessionsWindowContext, IsEnabledFileDownloads, IsEnabledFileUploads } from '../common/contextkeys.js';
-+import { SplitEditorsVertically, InEditorZenModeContext, AuxiliaryBarVisibleContext, SideBarVisibleContext, PanelAlignmentContext, PanelMaximizedContext, PanelVisibleContext, EmbedderIdentifierContext, EditorTabsVisibleContext, IsMainEditorCenteredLayoutContext, MainEditorAreaVisibleContext, DirtyWorkingCopiesContext, EmptyWorkspaceSupportContext, EnterMultiRootWorkspaceSupportContext, HasWebFileSystemAccess, IsMainWindowFullscreenContext, OpenFolderWorkspaceSupportContext, RemoteNameContext, VirtualWorkspaceContext, WorkbenchStateContext, WorkspaceFolderCountContext, PanelPositionContext, TemporaryWorkspaceContext, TitleBarVisibleContext, TitleBarStyleContext, IsAuxiliaryWindowFocusedContext, ActiveEditorGroupEmptyContext, ActiveEditorGroupIndexContext, ActiveEditorGroupLastContext, ActiveEditorGroupLockedContext, MultipleEditorGroupsContext, EditorsVisibleContext, AuxiliaryBarMaximizedContext, InAutomationContext, IsSessionsWindowContext, IsEnabledFileDownloads, IsEnabledFileUploads, IsEnabledInnovateX OfficialGettingStarted, } from '../common/contextkeys.js';
++import { SplitEditorsVertically, InEditorZenModeContext, AuxiliaryBarVisibleContext, SideBarVisibleContext, PanelAlignmentContext, PanelMaximizedContext, PanelVisibleContext, EmbedderIdentifierContext, EditorTabsVisibleContext, IsMainEditorCenteredLayoutContext, MainEditorAreaVisibleContext, DirtyWorkingCopiesContext, EmptyWorkspaceSupportContext, EnterMultiRootWorkspaceSupportContext, HasWebFileSystemAccess, IsMainWindowFullscreenContext, OpenFolderWorkspaceSupportContext, RemoteNameContext, VirtualWorkspaceContext, WorkbenchStateContext, WorkspaceFolderCountContext, PanelPositionContext, TemporaryWorkspaceContext, TitleBarVisibleContext, TitleBarStyleContext, IsAuxiliaryWindowFocusedContext, ActiveEditorGroupEmptyContext, ActiveEditorGroupIndexContext, ActiveEditorGroupLastContext, ActiveEditorGroupLockedContext, MultipleEditorGroupsContext, EditorsVisibleContext, AuxiliaryBarMaximizedContext, InAutomationContext, IsSessionsWindowContext, IsEnabledFileDownloads, IsEnabledFileUploads, IsEnabledInnovateXGettingStarted, } from '../common/contextkeys.js';
  import { preferredSideBySideGroupDirection, GroupDirection, IEditorGroupsService } from '../services/editor/common/editorGroupsService.js';
  import { IConfigurationService } from '../../platform/configuration/common/configuration.js';
  import { IBrowserWorkbenchEnvironmentService } from '../services/environment/browser/environmentService.js';
@@ -226,7 +226,7 @@ Index: code-server/lib/vscode/src/vs/workbench/browser/contextkeys.ts
  		// code-server
  		IsEnabledFileDownloads.bindTo(this.contextKeyService).set(this.environmentService.isEnabledFileDownloads ?? true)
  		IsEnabledFileUploads.bindTo(this.contextKeyService).set(this.environmentService.isEnabledFileUploads ?? true)
-+		IsEnabledInnovateX OfficialGettingStarted.bindTo(this.contextKeyService).set(this.environmentService.isEnabledInnovateX OfficialGettingStarted ?? true)
++		IsEnabledInnovateXGettingStarted.bindTo(this.contextKeyService).set(this.environmentService.isEnabledInnovateXGettingStarted ?? true)
  
  		this.registerListeners();
  	}
@@ -238,7 +238,7 @@ Index: code-server/lib/vscode/src/vs/workbench/common/contextkeys.ts
  
  export const IsEnabledFileDownloads = new RawContextKey<boolean>('isEnabledFileDownloads', true, true);
  export const IsEnabledFileUploads = new RawContextKey<boolean>('isEnabledFileUploads', true, true);
-+export const IsEnabledInnovateX OfficialGettingStarted = new RawContextKey<boolean>('isEnabledInnovateX OfficialGettingStarted', true, true);
++export const IsEnabledInnovateXGettingStarted = new RawContextKey<boolean>('isEnabledInnovateXGettingStarted', true, true);
  
  //#endregion
  

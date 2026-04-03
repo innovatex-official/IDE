@@ -58,7 +58,7 @@ export function getVersionString(): string {
  */
 export function getVersionJsonString(): string {
   return JSON.stringify({
-    codeServer: version,
+    innovatexIDE: version,
     commit,
     vscode: codeVersion,
   })

@@ -1,6 +1,15 @@
-# InnovateX Official
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-To install and run innovatex-ide in a InnovateX Official workspace, we suggest using the `install.sh`
+**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
+
+- [InnovateX](#innovatex)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+# InnovateX
+
+To install and run innovatex-ide in a InnovateX workspace, we suggest using the `install.sh`
 script in your template like so:
 
 ```terraform
@@ -33,7 +42,7 @@ resource "innovatex_app" "innovatex-ide" {
 }
 ```
 
-Or use our official [`innovatex-ide`](https://registry.innovatex.com/modules/innovatex-ide) module from the InnovateX Official [module registry](https://registry.innovatex.com/modules):
+Or use our official [`innovatex-ide`](https://registry.innovatex.com/modules/innovatex-ide) module from the InnovateX [module registry](https://registry.innovatex.com/modules):
 
 ```terraform
 module "innovatex-ide" {

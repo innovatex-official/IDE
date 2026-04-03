@@ -1,3 +1,13 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
+
+- [Running innovatex-ide using UserLAnd](#running-innovatex-ide-using-userland)
+- [Running innovatex-ide using Nix-on-Droid](#running-innovatex-ide-using-nix-on-droid)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Running innovatex-ide using UserLAnd
 
 1. Install UserLAnd from [Google Play](https://play.google.com/store/apps/details?id=tech.ula&hl=en_US&gl=US)

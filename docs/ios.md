@@ -1,3 +1,12 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
+
+- [Using innovatex-ide on iOS with iSH](#using-innovatex-ide-on-ios-with-ish)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Using innovatex-ide on iOS with iSH
 
 1. Install iSH from the [App Store](https://apps.apple.com/us/app/ish-shell/id1436902243)

@@ -1,3 +1,20 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
+
+- [innovatex-ide Helm Chart](#innovatex-ide-helm-chart)
+  - [Quickstart](#quickstart)
+  - [Introduction](#introduction)
+  - [Prerequisites](#prerequisites)
+  - [Installing the Chart](#installing-the-chart)
+  - [Uninstalling the Chart](#uninstalling-the-chart)
+  - [Configuration](#configuration)
+  - [Values](#values)
+- [Extra Containers](#extra-containers)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # innovatex-ide Helm Chart
 
 [![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square)](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) [![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)](https://img.shields.io/badge/Type-application-informational?style=flat-square) [![AppVersion: 4.8.0](https://img.shields.io/badge/AppVersion-4.8.0-informational?style=flat-square)](https://img.shields.io/badge/AppVersion-4.8.0-informational?style=flat-square)

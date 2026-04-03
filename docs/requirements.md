@@ -1,3 +1,13 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
+
+- [Requirements](#requirements)
+  - [Set up a VM on Google Cloud](#set-up-a-vm-on-google-cloud)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Requirements
 
 You'll need a machine on which you can run innovatex-ide. You can use a physical

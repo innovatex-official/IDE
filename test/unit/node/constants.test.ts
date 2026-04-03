@@ -67,7 +67,7 @@ describe("constants", () => {
     it("should return a machine-readable version string", () => {
       expect(constants.getVersionJsonString()).toStrictEqual(
         JSON.stringify({
-          codeServer: mockPackageJson.version,
+          innovatexIDE: mockPackageJson.version,
           commit: mockPackageJson.commit,
           vscode: mockCodePackageJson.version,
         }),
@@ -133,7 +133,7 @@ describe("constants", () => {
     it("should return a machine-readable version string", () => {
       expect(constants.getVersionJsonString()).toStrictEqual(
         JSON.stringify({
-          codeServer: "development",
+          innovatexIDE: "development",
           commit: "development",
           vscode: "development",
         }),

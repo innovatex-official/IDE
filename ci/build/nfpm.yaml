@@ -7,7 +7,7 @@ priority: "optional"
 maintainer: "Joe Previte <joe@innovatex.com>"
 description: |
   Run VS Code in the browser.
-vendor: "InnovateX Official"
+vendor: "InnovateX"
 homepage: "https://github.com/innovatex-official/IDE"
 license: "MIT"
 

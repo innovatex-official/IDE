@@ -133,7 +133,7 @@ EOF
 
 echo_innovatex_postinstall() {
   echoh
-  echoh "Deploy innovatex-ide for your team with InnovateX Official: https://github.com/innovatex/innovatex"
+  echoh "Deploy innovatex-ide for your team with InnovateX: https://github.com/innovatex/innovatex"
 }
 
 main() {

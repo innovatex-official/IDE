@@ -1,7 +1,7 @@
 import { logger } from "@coder/logger"
 import { promises as fs } from "fs"
 import path from "path"
-import { SettingsProvider, InnovateX OfficialSettings } from "../../../src/node/settings"
+import { SettingsProvider, InnovateXSettings } from "../../../src/node/settings"
 import { clean, mockLogger, tmpdir } from "../../utils/helpers"
 
 describe("settings", () => {
@@ -26,7 +26,7 @@ describe("settings", () => {
       jest.clearAllMocks()
     })
     it("should log a warning", async () => {
-      const settings = new SettingsProvider<InnovateX OfficialSettings>(pathToMockSettingsFile)
+      const settings = new SettingsProvider<InnovateXSettings>(pathToMockSettingsFile)
       await settings.read()
       // This happens when we can't parse a JSON (usually error in file)
       expect(logger.warn).toHaveBeenCalledWith(expect.stringMatching(/Expected ':'/))
@@ -48,7 +48,7 @@ describe("settings", () => {
       jest.clearAllMocks()
     })
     it("should log a warning", async () => {
-      const settings = new SettingsProvider<InnovateX OfficialSettings>(pathToMockSettingsFile)
+      const settings = new SettingsProvider<InnovateXSettings>(pathToMockSettingsFile)
       await settings.write({
         update: {
           checked: 2,

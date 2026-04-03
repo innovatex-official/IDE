@@ -1,3 +1,16 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
+
+- [**InnovateX IDE**](#innovatex-ide)
+  - [Features](#features)
+  - [Installation and Execution](#installation-and-execution)
+  - [Deployment](#deployment)
+  - [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # **InnovateX IDE**
 
 **InnovateX IDE** is an integrated development environment based on VS Code, optimized for browser access. It is designed to provide students with a consistent, end-to-end development environment.
