@@ -35,9 +35,11 @@ main() {
 
   # Apply patches if not already applied
   if [[ ! -f lib/vscode/.patched ]]; then
-    for patch in $(cat patches/series); do
-      patch -p1 < "patches/$patch"
-    done
+    while read -r patch; do
+      if [[ -n "$patch" ]]; then
+        patch -p1 < "patches/$patch"
+      fi
+    done < patches/series
     touch lib/vscode/.patched
   fi
 
