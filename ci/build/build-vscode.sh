@@ -10,7 +10,7 @@ fix-bin-script() {
   local script="lib/vscode-reh-web-$VSCODE_TARGET/bin/$1"
   sed -i.bak "s/@@VERSION@@/$(vscode_version)/g" "$script"
   sed -i.bak "s/@@COMMIT@@/$BUILD_SOURCEVERSION/g" "$script"
-  sed -i.bak "s/@@APPNAME@@/InnovateX IDE/g" "$script"
+  sed -i.bak "s/@@APPNAME@@/"InnovateX IDE"/g" "$script"
 
   # Fix Node path on Darwin and Linux.
   # We do not want expansion here; this text should make it to the file as-is.
@@ -72,14 +72,14 @@ main() {
     "enableTelemetry": true,
     "quality": "stable",
     "innovatexVersion": "$VERSION",
-    "nameShort": "InnovateX IDE",
-    "nameLong": "InnovateX IDE",
+    "nameShort": ""InnovateX IDE",
+    "nameLong": ""InnovateX IDE",
     "applicationName": "innovatex-ide",
     "dataFolderName": ".innovatex-ide",
     "win32MutexName": "innovatexide",
     "licenseUrl": "https://github.com/innovatex-official/IDE/blob/main/LICENSE",
-    "win32DirName": "InnovateX IDE",
-    "win32NameVersion": "InnovateX IDE",
+    "win32DirName": ""InnovateX IDE",
+    "win32NameVersion": ""InnovateX IDE",
     "win32AppUserModelId": "innovatex.ide",
     "win32ShellNameShort": "InnovateX &IDE",
     "darwinBundleIdentifier": "com.innovatex.ide",
