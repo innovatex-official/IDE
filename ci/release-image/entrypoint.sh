@@ -19,7 +19,7 @@ if [ "${DOCKER_USER-}" ]; then
 fi
 
 # Allow users to have scripts run on container startup to prepare workspace.
-# https://github.com/innovatex/innovatex-ide/issues/5177
+# https://github.com/innovatex-official/IDE/issues/5177
 if [ -d "${ENTRYPOINTD}" ]; then
   find "${ENTRYPOINTD}" -type f -executable -print -exec {} \;
 fi

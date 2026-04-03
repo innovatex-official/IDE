@@ -82,7 +82,7 @@ Index: code-server/lib/vscode/src/vs/server/node/telemetryClient.ts
 +		super();
 +
 +		// os.cpus() can take a very long time sometimes (personally I see 1-2
-+		// seconds in a Coder workspace).  This adds up significantly, especially
++		// seconds in a InnovateX Official workspace).  This adds up significantly, especially
 +		// when many telemetry requests are sent during startup, which can cause
 +		// connection timeouts.  Try to cache as much as we can.
 +		try {

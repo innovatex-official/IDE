@@ -72,7 +72,7 @@ jobs:
 
       - name: Merge in master
         run: |
-          git remote add upstream https://github.com/innovatex/innovatex-ide-aur.git
+          git remote add upstream https://github.com/innovatex-official/IDE-aur.git
           git fetch upstream
           git merge upstream/master
 

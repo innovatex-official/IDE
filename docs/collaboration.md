@@ -60,6 +60,6 @@ As `innovatex-ide` is based on VS Code, you can follow the steps described on Du
    innovatex-ide --enable-proposed-api genuitecllc.codetogether
    ```
 
-   Another option would be to add a value in innovatex-ide's [config file](https://innovatex.com/docs/innovatex-ide/latest/FAQ#how-does-the-config-file-work).
+   Another option would be to add a value in innovatex-ide's [config file](https://github.com/innovatex-official/IDE/docs/innovatex-ide/latest/FAQ#how-does-the-config-file-work).
 
 3. Refresh innovatex-ide and navigate to the CodeTogether icon in the sidebar to host or join a coding session.

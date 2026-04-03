@@ -5,7 +5,7 @@ if (process.env.GITHUB_TOKEN) {
   describe("GitHub token", ["--disable-workspace-trust"], {}, () => {
     test("should be logged in to pull requests extension", async ({ codeServerPage }) => {
       await codeServerPage.exec("git init")
-      await codeServerPage.exec("git remote add origin https://github.com/innovatex/innovatex-ide")
+      await codeServerPage.exec("git remote add origin https://github.com/innovatex-official/IDE")
       await codeServerPage.installExtension("GitHub.vscode-pull-request-github")
       await codeServerPage.executeCommandViaMenus("View: Show Github")
       await codeServerPage.page.click("text=Sign in")
@@ -19,7 +19,7 @@ if (process.env.GITHUB_TOKEN) {
   describe("No GitHub token", ["--disable-workspace-trust"], { GITHUB_TOKEN: "" }, () => {
     test("should not be logged in to pull requests extension", async ({ codeServerPage }) => {
       await codeServerPage.exec("git init")
-      await codeServerPage.exec("git remote add origin https://github.com/innovatex/innovatex-ide")
+      await codeServerPage.exec("git remote add origin https://github.com/innovatex-official/IDE")
       await codeServerPage.installExtension("GitHub.vscode-pull-request-github")
       await codeServerPage.executeCommandViaMenus("View: Show Github")
       await codeServerPage.page.click("text=Sign in")

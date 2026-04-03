@@ -93,7 +93,7 @@ main() {
 
   if ! vscode_install; then
     echo "You may not have the required dependencies to build the native modules."
-    echo "Please see https://github.com/innovatex/innovatex-ide/blob/main/docs/npm.md"
+    echo "Please see https://github.com/innovatex-official/IDE/blob/main/docs/npm.md"
     exit 1
   fi
 

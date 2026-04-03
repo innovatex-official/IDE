@@ -25,7 +25,7 @@ includes installing instructions based on your operating system.
 > **WARNING**: Do not use `yarn` to install innovatex-ide. Unlike `npm`, it does not respect
 > lockfiles for distributed applications. It will instead use the latest version
 > available at installation time - which might not be the one used for a given
-> innovatex-ide release, and [might lead to unexpected behavior](https://github.com/innovatex/innovatex-ide/issues/4927).
+> innovatex-ide release, and [might lead to unexpected behavior](https://github.com/innovatex-official/IDE/issues/4927).
 
 ## Node.js version
 
@@ -34,7 +34,7 @@ currently `22.x`. VS Code also [lists Node.js
 requirements](https://github.com/microsoft/vscode/wiki/How-to-Contribute#prerequisites).
 
 Using other versions of Node.js [may lead to unexpected
-behavior](https://github.com/innovatex/innovatex-ide/issues/1633).
+behavior](https://github.com/innovatex-official/IDE/issues/1633).
 
 ## Ubuntu, Debian
 
@@ -104,7 +104,7 @@ If the `innovatex-ide` command is not found, you'll need to [add a directory to 
 npm config get prefix
 ```
 
-For help and additional troubleshooting, see [#1397](https://github.com/innovatex/innovatex-ide/issues/1397).
+For help and additional troubleshooting, see [#1397](https://github.com/innovatex-official/IDE/issues/1397).
 
 ## Installing
 
@@ -119,7 +119,7 @@ innovatex-ide
 ## Troubleshooting
 
 If you need further assistance, post on our [GitHub Discussions
-page](https://github.com/innovatex/innovatex-ide/discussions).
+page](https://github.com/innovatex-official/IDE/discussions).
 
 ### Issues with Node.js after version upgrades
 

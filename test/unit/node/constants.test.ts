@@ -10,7 +10,7 @@ describe("constants", () => {
     const mockPackageJson = {
       name: "mock-innovatex-ide",
       description: "Run VS Code on a remote server.",
-      repository: "https://github.com/innovatex/innovatex-ide",
+      repository: "https://github.com/innovatex-official/IDE",
       version: "1.0.0",
       commit: "f6b2be2838f4afb217c2fd8f03eafedd8d55ef9b",
     }

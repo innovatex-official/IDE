@@ -1,6 +1,6 @@
-# Coder
+# InnovateX Official
 
-To install and run innovatex-ide in a Coder workspace, we suggest using the `install.sh`
+To install and run innovatex-ide in a InnovateX Official workspace, we suggest using the `install.sh`
 script in your template like so:
 
 ```terraform
@@ -11,7 +11,7 @@ resource "innovatex_agent" "dev" {
     #!/bin/sh
     set -x
     # install and start innovatex-ide
-    curl -fsSL https://innovatex-ide.dev/install.sh | sh -s -- --version 4.8.3
+    curl -fsSL https://github.com/innovatex-official/IDE/install.sh | sh -s -- --version 4.8.3
     innovatex-ide --auth none --port 13337 &
     EOF
 }
@@ -33,7 +33,7 @@ resource "innovatex_app" "innovatex-ide" {
 }
 ```
 
-Or use our official [`innovatex-ide`](https://registry.innovatex.com/modules/innovatex-ide) module from the Coder [module registry](https://registry.innovatex.com/modules):
+Or use our official [`innovatex-ide`](https://registry.innovatex.com/modules/innovatex-ide) module from the InnovateX Official [module registry](https://registry.innovatex.com/modules):
 
 ```terraform
 module "innovatex-ide" {

@@ -5,7 +5,7 @@ set -eu
 # Runs innovatex-ide with the bundled node binary.
 
 _realpath() {
-  # See https://github.com/innovatex/innovatex-ide/issues/1537 on why no realpath or readlink -f.
+  # See https://github.com/innovatex-official/IDE/issues/1537 on why no realpath or readlink -f.
 
   script="$1"
   cd "$(dirname "$script")"

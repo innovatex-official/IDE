@@ -2,14 +2,14 @@
 set -eu
 
 # innovatex-ide's automatic install script.
-# See https://innovatex.com/docs/innovatex-ide/latest/install
+# See https://github.com/innovatex-official/IDE/docs/innovatex-ide/latest/install
 
 usage() {
   arg0="$0"
   if [ "$0" = sh ]; then
-    arg0="curl -fsSL https://innovatex-ide.dev/install.sh | sh -s --"
+    arg0="curl -fsSL https://github.com/innovatex-official/IDE/install.sh | sh -s --"
   else
-    not_curl_usage="The latest script is available at https://innovatex-ide.dev/install.sh
+    not_curl_usage="The latest script is available at https://github.com/innovatex-official/IDE/install.sh
 "
   fi
 
@@ -69,7 +69,7 @@ fall back to npm so on architectures without pre-built releases this will error.
 
 The installer will cache all downloaded assets into ~/.cache/innovatex-ide
 
-More installation docs are at https://innovatex.com/docs/innovatex-ide/latest/install
+More installation docs are at https://github.com/innovatex-official/IDE/docs/innovatex-ide/latest/install
 EOF
 }
 
@@ -78,9 +78,9 @@ echo_latest_version() {
     version="$(curl -fsSL https://api.github.com/repos/innovatex/innovatex-ide/releases | awk 'match($0,/.*"html_url": "(.*\/releases\/tag\/.*)".*/)' | head -n 1 | awk -F '"' '{print $4}')"
   else
     # https://gist.github.com/lukechilds/a83e1d7127b78fef38c2914c4ececc3c#gistcomment-2758860
-    version="$(curl -fsSLI -o /dev/null -w "%{url_effective}" https://github.com/innovatex/innovatex-ide/releases/latest)"
+    version="$(curl -fsSLI -o /dev/null -w "%{url_effective}" https://github.com/innovatex-official/IDE/releases/latest)"
   fi
-  version="${version#https://github.com/innovatex/innovatex-ide/releases/tag/}"
+  version="${version#https://github.com/innovatex-official/IDE/releases/tag/}"
   version="${version#v}"
   echo "$version"
 }
@@ -133,7 +133,7 @@ EOF
 
 echo_innovatex_postinstall() {
   echoh
-  echoh "Deploy innovatex-ide for your team with Coder: https://github.com/innovatex/innovatex"
+  echoh "Deploy innovatex-ide for your team with InnovateX Official: https://github.com/innovatex/innovatex"
 }
 
 main() {
@@ -221,7 +221,7 @@ main() {
   if [ "${RSH_ARGS-}" ]; then
     RSH="${RSH-ssh}"
     echoh "Installing remotely with $RSH $RSH_ARGS"
-    curl -fsSL https://innovatex-ide.dev/install.sh | prefix "$RSH_ARGS" "$RSH" "$RSH_ARGS" sh -s -- "$ALL_FLAGS"
+    curl -fsSL https://github.com/innovatex-official/IDE/install.sh | prefix "$RSH_ARGS" "$RSH" "$RSH_ARGS" sh -s -- "$ALL_FLAGS"
     return
   fi
 
@@ -359,7 +359,7 @@ install_deb() {
   echoh "Installing v$VERSION of the $ARCH deb package from GitHub."
   echoh
 
-  fetch "https://github.com/innovatex/innovatex-ide/releases/download/v$VERSION/innovatex-ide_${VERSION}_$ARCH.deb" \
+  fetch "https://github.com/innovatex-official/IDE/releases/download/v$VERSION/innovatex-ide_${VERSION}_$ARCH.deb" \
     "$CACHE_DIR/innovatex-ide_${VERSION}_$ARCH.deb"
   sudo_sh_c dpkg -i "$CACHE_DIR/innovatex-ide_${VERSION}_$ARCH.deb"
 
@@ -370,7 +370,7 @@ install_rpm() {
   echoh "Installing v$VERSION of the $ARCH rpm package from GitHub."
   echoh
 
-  fetch "https://github.com/innovatex/innovatex-ide/releases/download/v$VERSION/innovatex-ide-$VERSION-$ARCH.rpm" \
+  fetch "https://github.com/innovatex-official/IDE/releases/download/v$VERSION/innovatex-ide-$VERSION-$ARCH.rpm" \
     "$CACHE_DIR/innovatex-ide-$VERSION-$ARCH.rpm"
   sudo_sh_c rpm -U "$CACHE_DIR/innovatex-ide-$VERSION-$ARCH.rpm"
 
@@ -396,7 +396,7 @@ install_standalone() {
   echoh "Installing v$VERSION of the $ARCH release from GitHub."
   echoh
 
-  fetch "https://github.com/innovatex/innovatex-ide/releases/download/v$VERSION/innovatex-ide-$VERSION-$OS-$ARCH.tar.gz" \
+  fetch "https://github.com/innovatex-official/IDE/releases/download/v$VERSION/innovatex-ide-$VERSION-$OS-$ARCH.tar.gz" \
     "$CACHE_DIR/innovatex-ide-$VERSION-$OS-$ARCH.tar.gz"
 
   # -w only works if the directory exists so try creating it first. If this
@@ -442,7 +442,7 @@ install_npm() {
   fi
   echoerr "Please install npm to install innovatex-ide!"
   echoerr "You will need at least node v20 and a few C dependencies."
-  echoerr "See the docs https://innovatex.com/docs/innovatex-ide/latest/install#npm"
+  echoerr "See the docs https://github.com/innovatex-official/IDE/docs/innovatex-ide/latest/install#npm"
 
   exit 1
 }

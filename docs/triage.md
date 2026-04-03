@@ -28,8 +28,8 @@ This will show issues that:
 1. If more information is required, please ask the submitter and tag as
    `waiting-for-info` and wait.
 1. Finally, the issue should be moved into the
-   [innovatex-ide](https://github.com/innovatex/innovatex-ide/projects/1) project where we
+   [innovatex-ide](https://github.com/innovatex-official/IDE/projects/1) project where we
    pick out issues to fix and track their progress.
 
-We also use [milestones](https://github.com/innovatex/innovatex-ide/milestones) to track
+We also use [milestones](https://github.com/innovatex-official/IDE/milestones) to track
 what issues are planned/or were closed for what release.

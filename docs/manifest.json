@@ -38,8 +38,8 @@
       "path": "./guide.md",
       "children": [
         {
-          "title": "Coder",
-          "description": "How to run innovatex-ide in Coder",
+          "title": "InnovateX Official",
+          "description": "How to run innovatex-ide in InnovateX Official",
           "path": "./innovatex.md"
         },
         {
@@ -90,7 +90,7 @@
       "children": [
         {
           "title": "Code of conduct",
-          "description": "Coder expects contributors to innovatex-ide to behave in a manner that creates an open and welcoming environment.",
+          "description": "InnovateX Official expects contributors to innovatex-ide to behave in a manner that creates an open and welcoming environment.",
           "path": "./CODE_OF_CONDUCT.md"
         },
         {

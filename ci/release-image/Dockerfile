@@ -48,7 +48,7 @@ COPY ci/release-image/entrypoint.sh /usr/bin/entrypoint.sh
 RUN --mount=from=packages,src=/tmp,dst=/tmp/packages dpkg -i /tmp/packages/innovatex-ide*$(dpkg --print-architecture).deb
 
 # Allow users to have scripts run on container startup to prepare workspace.
-# https://github.com/innovatex/innovatex-ide/issues/5177
+# https://github.com/innovatex-official/IDE/issues/5177
 ENV ENTRYPOINTD=${HOME}/entrypoint.d
 
 EXPOSE 8080

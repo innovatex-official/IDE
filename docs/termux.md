@@ -76,7 +76,7 @@ npm update --global innovatex-ide
 ## Upgrade
 
 1. Remove all previous installs `rm -rf ~/.local/lib/innovatex-ide-*`
-2. Run the install script again `curl -fsSL https://innovatex-ide.dev/install.sh | sh`
+2. Run the install script again `curl -fsSL https://github.com/innovatex-official/IDE/install.sh | sh`
 
 ## Known Issues
 

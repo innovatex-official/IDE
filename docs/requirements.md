@@ -9,7 +9,7 @@ At the minimum, we recommend:
 - 2 CPU cores
 
 You can use any Linux distribution, but [our
-docs](https://innovatex.com/docs/innovatex-ide/latest/guide) assume that you're using
+docs](https://github.com/innovatex-official/IDE/docs/innovatex-ide/latest/guide) assume that you're using
 Debian hosted by Google Cloud (see the following section for instructions on
 setting this up).
 
