@@ -129,10 +129,10 @@ describe("http", () => {
       const mockReq = getMockReq({
         originalUrl: "localhost:8080",
       })
-      const mockQueryParams = { folder: "/Users/jp/dev/coder" }
+      const mockQueryParams = { folder: "/Users/jp/dev/innovatex" }
       const mockTo = ""
       const actual = http.constructRedirectPath(mockReq, mockQueryParams, mockTo)
-      const expected = "./?folder=/Users/jp/dev/coder"
+      const expected = "./?folder=/Users/jp/dev/innovatex"
       expect(actual).toBe(expected)
     })
     it("should use an empty string if no query params", () => {
@@ -159,10 +159,10 @@ describe("http", () => {
       const mockReq = getMockReq({
         originalUrl: "localhost:8080",
       })
-      const mockQueryParams = { folder: "/Users/jp/dev/coder" }
+      const mockQueryParams = { folder: "/Users/jp/dev/innovatex" }
       const mockTo = "vscode"
       const actual = http.constructRedirectPath(mockReq, mockQueryParams, mockTo)
-      const expected = "./vscode?folder=/Users/jp/dev/coder"
+      const expected = "./vscode?folder=/Users/jp/dev/innovatex"
       expect(actual).toBe(expected)
     })
   })

@@ -1,6 +1,6 @@
 # Collaboration
 
-With third-party extensions, you can use code-server to collaborate with other developers in real time.
+With third-party extensions, you can use innovatex-ide to collaborate with other developers in real time.
 
 ## Code sharing using Duckly
 
@@ -16,19 +16,19 @@ With third-party extensions, you can use code-server to collaborate with other d
 
 Duckly uses an extension to provide real time sharing features
 
-1. Install the Duckly extension from OpenVSX on `code-server`.
+1. Install the Duckly extension from OpenVSX on `innovatex-ide`.
 
 ```bash
 SERVICE_URL=https://open-vsx.org/vscode/gallery \
   ITEM_URL=https://open-vsx.org/vscode/item \
-  code-server --install-extension gitduck.code-streaming
+  innovatex-ide --install-extension gitduck.code-streaming
 ```
 
-2. Refresh you `code-server` window. You should now be able to see the Duckly extension.
+2. Refresh you `innovatex-ide` window. You should now be able to see the Duckly extension.
 
 ### Sharing with Duckly
 
-As `code-server` is based on VS Code, you can follow the steps described on Duckly's [Pair programming with VS Code](https://duckly.com/tools/vscode) page and skip the installation step.
+As `innovatex-ide` is based on VS Code, you can follow the steps described on Duckly's [Pair programming with VS Code](https://duckly.com/tools/vscode) page and skip the installation step.
 
 ## Code sharing using CodeTogether
 
@@ -46,20 +46,20 @@ As `code-server` is based on VS Code, you can follow the steps described on Duck
 
 ### Installing the CodeTogether extension
 
-1. Install the CodeTogether extension from OpenVSX on `code-server`.
+1. Install the CodeTogether extension from OpenVSX on `innovatex-ide`.
 
    ```sh
    SERVICE_URL=https://open-vsx.org/vscode/gallery \
      ITEM_URL=https://open-vsx.org/vscode/item \
-     code-server --install-extension genuitecllc.codetogether
+     innovatex-ide --install-extension genuitecllc.codetogether
    ```
 
-2. CodeTogether requires VS Code's proposed API to run. Start code-server with the following flag:
+2. CodeTogether requires VS Code's proposed API to run. Start innovatex-ide with the following flag:
 
    ```sh
-   code-server --enable-proposed-api genuitecllc.codetogether
+   innovatex-ide --enable-proposed-api genuitecllc.codetogether
    ```
 
-   Another option would be to add a value in code-server's [config file](https://coder.com/docs/code-server/latest/FAQ#how-does-the-config-file-work).
+   Another option would be to add a value in innovatex-ide's [config file](https://innovatex.com/docs/innovatex-ide/latest/FAQ#how-does-the-config-file-work).
 
-3. Refresh code-server and navigate to the CodeTogether icon in the sidebar to host or join a coding session.
+3. Refresh innovatex-ide and navigate to the CodeTogether icon in the sidebar to host or join a coding session.

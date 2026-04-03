@@ -1,13 +1,13 @@
 import { promises as fs } from "fs"
 import * as path from "path"
-import { getMaybeProxiedCodeServer } from "../utils/helpers"
+import { getMaybeProxiedInnovateXIDE } from "../utils/helpers"
 import { describe, test, expect } from "./baseFixture"
-import { CodeServer } from "./models/CodeServer"
+import { InnovateXIDE } from "./models/InnovateXIDE"
 
-describe("code-server", ["--disable-workspace-trust"], {}, () => {
+describe("innovatex-ide", ["--disable-workspace-trust"], {}, () => {
   // TODO@asher: Generalize this?  Could be nice if we were to ever need
   // multiple migration tests in other suites.
-  const instances = new Map<string, CodeServer>()
+  const instances = new Map<string, InnovateXIDE>()
   test.afterAll(async () => {
     const procs = Array.from(instances.values())
     instances.clear()
@@ -22,11 +22,11 @@ describe("code-server", ["--disable-workspace-trust"], {}, () => {
     const url = codeServerPage.page.url()
     // We use match because there may be a / at the end
     // so we don't want it to fail if we expect http://localhost:8080 to match http://localhost:8080/
-    const address = await getMaybeProxiedCodeServer(codeServerPage)
+    const address = await getMaybeProxiedInnovateXIDE(codeServerPage)
     expect(url).toMatch(address)
   })
 
-  test("should always see the code-server editor", async ({ codeServerPage }) => {
+  test("should always see the innovatex-ide editor", async ({ codeServerPage }) => {
     expect(await codeServerPage.isEditorVisible()).toBe(true)
   })
 

@@ -2,10 +2,10 @@
 set -eu
 
 # This script is intended to be bundled into the standalone releases.
-# Runs code-server with the bundled node binary.
+# Runs innovatex-ide with the bundled node binary.
 
 _realpath() {
-  # See https://github.com/coder/code-server/issues/1537 on why no realpath or readlink -f.
+  # See https://github.com/innovatex/innovatex-ide/issues/1537 on why no realpath or readlink -f.
 
   script="$1"
   cd "$(dirname "$script")"

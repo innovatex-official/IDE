@@ -1,4 +1,4 @@
-import { field, Level, logger } from "@coder/logger"
+import { field, Level, logger } from "@innovatex/logger"
 import { promises as fs } from "fs"
 import { load } from "js-yaml"
 import * as path from "path"
@@ -195,7 +195,7 @@ export const options: Options<Required<UserProvidedArgs>> = {
   },
   "disable-getting-started-override": {
     type: "boolean",
-    description: "Disable the coder/coder override in the Help: Getting Started page.",
+    description: "Disable the innovatex/innovatex override in the Help: Getting Started page.",
   },
   "disable-proxy": {
     type: "boolean",

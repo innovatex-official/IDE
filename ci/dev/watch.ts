@@ -31,12 +31,12 @@ class Watcher {
     // Pass CLI args, save for `node` and the initial script name.
     const args = process.argv.slice(2)
     this.webServer = spawn("node", [path.join(this.rootPath, "out/node/entry.js"), ...args])
-    onLine(this.webServer, (line) => console.log("[code-server]", line))
+    onLine(this.webServer, (line) => console.log("[innovatex-ide]", line))
     const { pid } = this.webServer
 
-    this.webServer.on("exit", () => console.log("[code-server]", `Web process ${pid} exited`))
+    this.webServer.on("exit", () => console.log("[innovatex-ide]", `Web process ${pid} exited`))
 
-    console.log("\n[code-server]", `Spawned web server process ${pid}`)
+    console.log("\n[innovatex-ide]", `Spawned web server process ${pid}`)
   }
 
   //#endregion
@@ -71,7 +71,7 @@ class Watcher {
     }
 
     onLine(this.compilers.vscode, this.parseVSCodeLine)
-    onLine(this.compilers.codeServer, this.parseCodeServerLine)
+    onLine(this.compilers.codeServer, this.parseInnovateXIDELine)
 
     if (this.compilers.plugins) {
       onLine(this.compilers.plugins, this.parsePluginLine)
@@ -93,13 +93,13 @@ class Watcher {
     }
   }
 
-  private parseCodeServerLine: OnLineCallback = (strippedLine, originalLine) => {
+  private parseInnovateXIDELine: OnLineCallback = (strippedLine, originalLine) => {
     if (!strippedLine.length) return
 
-    console.log("[Compiler][code-server]", originalLine)
+    console.log("[Compiler][innovatex-ide]", originalLine)
 
     if (strippedLine.includes("Watching for file changes")) {
-      console.log("[Compiler][code-server]", "Finished compiling!", "(Refresh your web browser ♻️)")
+      console.log("[Compiler][innovatex-ide]", "Finished compiling!", "(Refresh your web browser ♻️)")
       this.reloadWebServer()
     }
   }

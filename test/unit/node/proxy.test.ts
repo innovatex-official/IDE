@@ -116,13 +116,13 @@ describe("proxy", () => {
     codeServer = await integration.setup(["--auth=none"], "")
     const resp = await codeServer.fetch(proxyPath, {
       method: "post",
-      body: JSON.stringify("coder is the best"),
+      body: JSON.stringify("innovatex is the best"),
       headers: {
         "Content-Type": "application/json",
       },
     })
     expect(resp.status).toBe(200)
-    expect(await resp.json()).toBe("coder is the best")
+    expect(await resp.json()).toBe("innovatex is the best")
   })
 
   it("should handle bad requests", async () => {
@@ -133,7 +133,7 @@ describe("proxy", () => {
     codeServer = await integration.setup(["--auth=none"], "")
     const resp = await codeServer.fetch(proxyPath, {
       method: "post",
-      body: "coder is the best",
+      body: "innovatex is the best",
       headers: {
         "Content-Type": "application/json",
       },
@@ -160,7 +160,7 @@ describe("proxy", () => {
     codeServer = await integration.setup(["--auth=none"], "")
     const resp = await codeServer.fetch(proxyPath, {
       method: "post",
-      body: JSON.stringify("coder is the best"),
+      body: JSON.stringify("innovatex is the best"),
       headers: {
         "Content-Type": "application/json",
       },

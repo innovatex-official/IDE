@@ -11,7 +11,7 @@ describe("i18n", () => {
 
   beforeEach(async () => {
     // Create temporary directory for test files
-    tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "code-server-i18n-test-"))
+    tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "innovatex-ide-i18n-test-"))
 
     // Create test files
     validJsonFile = path.join(tempDir, "valid.json")
@@ -82,7 +82,7 @@ describe("i18n", () => {
       await fs.writeFile(
         unicodeJsonFile,
         JSON.stringify({
-          WELCOME: "欢迎来到 code-server",
+          WELCOME: "欢迎来到 innovatex-ide",
           LOGIN_TITLE: "Willkommen bei {{app}}",
           SPECIAL: "Special chars: àáâãäåæçèéêë 🚀 ♠️ ∆",
         }),

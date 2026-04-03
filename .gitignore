@@ -7,7 +7,7 @@ release-gcp/
 release-images/
 node_modules
 /plugins
-/lib/coder-cloud-agent
+/lib/innovatex-cloud-agent
 .home
 coverage
 **/.DS_Store

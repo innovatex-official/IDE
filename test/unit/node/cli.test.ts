@@ -1,4 +1,4 @@
-import { Level, logger } from "@coder/logger"
+import { Level, logger } from "@innovatex/logger"
 import { promises as fs } from "fs"
 import * as path from "path"
 import {
@@ -37,8 +37,8 @@ const defaults = {
   usingEnvHashedPassword: false,
   "extensions-dir": path.join(paths.data, "extensions"),
   "user-data-dir": paths.data,
-  "session-socket": path.join(paths.data, "code-server-ipc.sock"),
-  "app-name": "code-server",
+  "session-socket": path.join(paths.data, "innovatex-ide-ipc.sock"),
+  "app-name": "innovatex-ide",
   _: [],
 }
 
@@ -114,7 +114,7 @@ describe("parser", () => {
 
           "--skip-auth-preflight",
 
-          ["--session-socket", "/tmp/override-code-server-ipc-socket"],
+          ["--session-socket", "/tmp/override-innovatex-ide-ipc-socket"],
 
           ["--reconnection-grace-time", "86400"],
 
@@ -153,7 +153,7 @@ describe("parser", () => {
       i18n: path.resolve("path/to/custom-strings.json"),
       version: true,
       "bind-addr": "192.169.0.1:8080",
-      "session-socket": "/tmp/override-code-server-ipc-socket",
+      "session-socket": "/tmp/override-innovatex-ide-ipc-socket",
       "reconnection-grace-time": "86400",
       "abs-proxy-base-path": "/codeserver/app1",
       "skip-auth-preflight": true,
@@ -296,15 +296,15 @@ describe("parser", () => {
 
   it("should support repeatable flags", async () => {
     expect(() => parse(["--proxy-domain", ""])).toThrowError(/--proxy-domain requires a value/)
-    expect(parse(["--proxy-domain", "*.coder.com"])).toEqual({
-      "proxy-domain": ["*.coder.com"],
+    expect(parse(["--proxy-domain", "*.innovatex.com"])).toEqual({
+      "proxy-domain": ["*.innovatex.com"],
     })
-    expect(parse(["--proxy-domain", "*.coder.com", "--proxy-domain", "test.com"])).toEqual({
-      "proxy-domain": ["*.coder.com", "test.com"],
+    expect(parse(["--proxy-domain", "*.innovatex.com", "--proxy-domain", "test.com"])).toEqual({
+      "proxy-domain": ["*.innovatex.com", "test.com"],
     })
     // Commas are literal, at the moment.
-    expect(parse(["--proxy-domain", "*.coder.com,test.com"])).toEqual({
-      "proxy-domain": ["*.coder.com,test.com"],
+    expect(parse(["--proxy-domain", "*.innovatex.com,test.com"])).toEqual({
+      "proxy-domain": ["*.innovatex.com,test.com"],
     })
   })
 
@@ -493,15 +493,15 @@ describe("parser", () => {
   })
 
   it("should filter proxy domains", async () => {
-    const args = parse(["--proxy-domain", "*.coder.com", "--proxy-domain", "coder.com", "--proxy-domain", "coder.org"])
+    const args = parse(["--proxy-domain", "*.innovatex.com", "--proxy-domain", "innovatex.com", "--proxy-domain", "innovatex.org"])
     expect(args).toEqual({
-      "proxy-domain": ["*.coder.com", "coder.com", "coder.org"],
+      "proxy-domain": ["*.innovatex.com", "innovatex.com", "innovatex.org"],
     })
 
     const defaultArgs = await setDefaults(args)
     expect(defaultArgs).toEqual({
       ...defaults,
-      "proxy-domain": ["{{port}}.coder.com", "{{port}}.coder.org"],
+      "proxy-domain": ["{{port}}.innovatex.com", "{{port}}.innovatex.org"],
     })
   })
   it("should allow '=,$/' in strings", async () => {
@@ -567,21 +567,21 @@ describe("parser", () => {
   })
 
   it("should set proxy uri", async () => {
-    await setDefaults(parse(["--proxy-domain", "coder.org"]))
-    expect(process.env.VSCODE_PROXY_URI).toEqual("//{{port}}.coder.org")
+    await setDefaults(parse(["--proxy-domain", "innovatex.org"]))
+    expect(process.env.VSCODE_PROXY_URI).toEqual("//{{port}}.innovatex.org")
   })
 
   it("should set proxy uri to first domain", async () => {
     await setDefaults(
-      parse(["--proxy-domain", "*.coder.com", "--proxy-domain", "coder.com", "--proxy-domain", "coder.org"]),
+      parse(["--proxy-domain", "*.innovatex.com", "--proxy-domain", "innovatex.com", "--proxy-domain", "innovatex.org"]),
     )
-    expect(process.env.VSCODE_PROXY_URI).toEqual("//{{port}}.coder.com")
+    expect(process.env.VSCODE_PROXY_URI).toEqual("//{{port}}.innovatex.com")
   })
 
   it("should not override existing proxy uri", async () => {
     process.env.VSCODE_PROXY_URI = "foo"
     await setDefaults(
-      parse(["--proxy-domain", "*.coder.com", "--proxy-domain", "coder.com", "--proxy-domain", "coder.org"]),
+      parse(["--proxy-domain", "*.innovatex.com", "--proxy-domain", "innovatex.com", "--proxy-domain", "innovatex.org"]),
     )
     expect(process.env.VSCODE_PROXY_URI).toEqual("foo")
   })
@@ -600,7 +600,7 @@ describe("cli", () => {
     tmpDirPath = await tmpdir(testName)
   })
 
-  it("should use existing if inside code-server", async () => {
+  it("should use existing if inside innovatex-ide", async () => {
     process.env.VSCODE_IPC_HOOK_CLI = "test"
     const args: UserProvidedArgs = {}
     expect(await shouldOpenInExistingInstance(args, "")).toStrictEqual("test")
@@ -840,7 +840,7 @@ describe("bindAddrFromArgs", () => {
 
   it("should use the host if set in args", () => {
     const args: UserProvidedArgs = {
-      ["host"]: "coder",
+      ["host"]: "innovatex",
     }
 
     const addr = {
@@ -850,7 +850,7 @@ describe("bindAddrFromArgs", () => {
 
     const actual = bindAddrFromArgs(addr, args)
     const expected = {
-      host: "coder",
+      host: "innovatex",
       port: 8080,
     }
 
@@ -859,7 +859,7 @@ describe("bindAddrFromArgs", () => {
 
   it("should use process.env.CODE_SERVER_HOST if set", () => {
     const [setValue, resetValue] = useEnv("CODE_SERVER_HOST")
-    setValue("coder")
+    setValue("innovatex")
 
     const args: UserProvidedArgs = {}
 
@@ -870,7 +870,7 @@ describe("bindAddrFromArgs", () => {
 
     const actual = bindAddrFromArgs(addr, args)
     const expected = {
-      host: "coder",
+      host: "innovatex",
       port: 8080,
     }
 
@@ -880,7 +880,7 @@ describe("bindAddrFromArgs", () => {
 
   it("should use the args.host over process.env.CODE_SERVER_HOST if both set", () => {
     const [setValue, resetValue] = useEnv("CODE_SERVER_HOST")
-    setValue("coder")
+    setValue("innovatex")
 
     const args: UserProvidedArgs = {
       host: "123.123.123.123",
@@ -1049,14 +1049,14 @@ describe("optionDescriptions", () => {
       "disable-update-check": {
         type: "boolean",
         description:
-          "Disable update check. Without this flag, code-server checks every 6 hours against the latest github release and \n" +
+          "Disable update check. Without this flag, innovatex-ide checks every 6 hours against the latest github release and \n" +
           "then notifies you once every week that a new release is available.",
       },
     }
     expect(optionDescriptions(opts)).toStrictEqual([
       "  --cert-key             Path to certificate key when using non-generated cert.",
       "  --cert-host            Hostname to use when generating a self signed certificate.",
-      `  --disable-update-check Disable update check. Without this flag, code-server checks every 6 hours against the latest github release and
+      `  --disable-update-check Disable update check. Without this flag, innovatex-ide checks every 6 hours against the latest github release and
                           then notifies you once every week that a new release is available.`,
     ])
   })

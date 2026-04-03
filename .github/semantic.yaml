@@ -9,16 +9,16 @@
 #
 # '(docs)' is the scope. Scopes are used to signify where the change occurred.
 scopes:
-  # docs: changes to the code-server documentation.
+  # docs: changes to the innovatex-ide documentation.
   - docs
 
   # vendor: changes to vendored dependencies.
   - vendor
 
-  # deps: changes to code-server's dependencies.
+  # deps: changes to innovatex-ide's dependencies.
   - deps
 
-  # cs: changes to code specific to code-server.
+  # cs: changes to code specific to innovatex-ide.
   - cs
 
   # cli: changes to the command-line interface.
@@ -38,7 +38,7 @@ types:
   # A build of any kind.
   - build
 
-  # A user-facing change that corrects a defect in code-server.
+  # A user-facing change that corrects a defect in innovatex-ide.
   - fix
 
   # Any code task that is ignored for changelog purposes. Examples include

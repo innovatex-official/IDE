@@ -1,24 +1,24 @@
 #!/bin/sh
 set -eu
 
-# code-server's automatic install script.
-# See https://coder.com/docs/code-server/latest/install
+# innovatex-ide's automatic install script.
+# See https://innovatex.com/docs/innovatex-ide/latest/install
 
 usage() {
   arg0="$0"
   if [ "$0" = sh ]; then
-    arg0="curl -fsSL https://code-server.dev/install.sh | sh -s --"
+    arg0="curl -fsSL https://innovatex-ide.dev/install.sh | sh -s --"
   else
-    not_curl_usage="The latest script is available at https://code-server.dev/install.sh
+    not_curl_usage="The latest script is available at https://innovatex-ide.dev/install.sh
 "
   fi
 
   cath << EOF
-Installs code-server.
+Installs innovatex-ide.
 It tries to use the system package manager if possible.
-After successful installation it explains how to start using code-server.
+After successful installation it explains how to start using innovatex-ide.
 
-Pass in user@host to install code-server on user@host over ssh.
+Pass in user@host to install innovatex-ide on user@host over ssh.
 The remote host must have internet access.
 ${not_curl_usage-}
 Usage:
@@ -44,8 +44,8 @@ Usage:
 
   --prefix <dir>
       Sets the prefix used by standalone release archives. Defaults to ~/.local
-      The release is unarchived into ~/.local/lib/code-server-X.X.X
-      and the binary symlinked into ~/.local/bin/code-server
+      The release is unarchived into ~/.local/lib/innovatex-ide-X.X.X
+      and the binary symlinked into ~/.local/bin/innovatex-ide
       To install system wide pass --prefix=/usr/local
 
   --rsh <bin>
@@ -67,20 +67,20 @@ system's operating system and architecture.
 The standalone method will force installion using GitHub releases. It will not
 fall back to npm so on architectures without pre-built releases this will error.
 
-The installer will cache all downloaded assets into ~/.cache/code-server
+The installer will cache all downloaded assets into ~/.cache/innovatex-ide
 
-More installation docs are at https://coder.com/docs/code-server/latest/install
+More installation docs are at https://innovatex.com/docs/innovatex-ide/latest/install
 EOF
 }
 
 echo_latest_version() {
   if [ "${EDGE-}" ]; then
-    version="$(curl -fsSL https://api.github.com/repos/coder/code-server/releases | awk 'match($0,/.*"html_url": "(.*\/releases\/tag\/.*)".*/)' | head -n 1 | awk -F '"' '{print $4}')"
+    version="$(curl -fsSL https://api.github.com/repos/innovatex/innovatex-ide/releases | awk 'match($0,/.*"html_url": "(.*\/releases\/tag\/.*)".*/)' | head -n 1 | awk -F '"' '{print $4}')"
   else
     # https://gist.github.com/lukechilds/a83e1d7127b78fef38c2914c4ececc3c#gistcomment-2758860
-    version="$(curl -fsSLI -o /dev/null -w "%{url_effective}" https://github.com/coder/code-server/releases/latest)"
+    version="$(curl -fsSLI -o /dev/null -w "%{url_effective}" https://github.com/innovatex/innovatex-ide/releases/latest)"
   fi
-  version="${version#https://github.com/coder/code-server/releases/tag/}"
+  version="${version#https://github.com/innovatex/innovatex-ide/releases/tag/}"
   version="${version#v}"
   echo "$version"
 }
@@ -90,22 +90,22 @@ echo_npm_postinstall() {
   cath << EOF
 npm package has been installed.
 
-Extend your path to use code-server:
+Extend your path to use innovatex-ide:
   PATH="$NPM_BIN_DIR:\$PATH"
 Then run with:
-  code-server
+  innovatex-ide
 EOF
 }
 
 echo_standalone_postinstall() {
   echoh
   cath << EOF
-Standalone release has been installed into $STANDALONE_INSTALL_PREFIX/lib/code-server-$VERSION
+Standalone release has been installed into $STANDALONE_INSTALL_PREFIX/lib/innovatex-ide-$VERSION
 
-Extend your path to use code-server:
+Extend your path to use innovatex-ide:
   PATH="$STANDALONE_INSTALL_PREFIX/bin:\$PATH"
 Then run with:
-  code-server
+  innovatex-ide
 EOF
 }
 
@@ -115,7 +115,7 @@ echo_brew_postinstall() {
 Brew release has been installed.
 
 Run with:
-  code-server
+  innovatex-ide
 EOF
 }
 
@@ -124,16 +124,16 @@ echo_systemd_postinstall() {
   cath << EOF
 $1 package has been installed.
 
-To have systemd start code-server now and restart on boot:
-  sudo systemctl enable --now code-server@\$USER
+To have systemd start innovatex-ide now and restart on boot:
+  sudo systemctl enable --now innovatex-ide@\$USER
 Or, if you don't want/need a background service you can run:
-  code-server
+  innovatex-ide
 EOF
 }
 
-echo_coder_postinstall() {
+echo_innovatex_postinstall() {
   echoh
-  echoh "Deploy code-server for your team with Coder: https://github.com/coder/coder"
+  echoh "Deploy innovatex-ide for your team with Coder: https://github.com/innovatex/innovatex"
 }
 
 main() {
@@ -221,7 +221,7 @@ main() {
   if [ "${RSH_ARGS-}" ]; then
     RSH="${RSH-ssh}"
     echoh "Installing remotely with $RSH $RSH_ARGS"
-    curl -fsSL https://code-server.dev/install.sh | prefix "$RSH_ARGS" "$RSH" "$RSH_ARGS" sh -s -- "$ALL_FLAGS"
+    curl -fsSL https://innovatex-ide.dev/install.sh | prefix "$RSH_ARGS" "$RSH" "$RSH_ARGS" sh -s -- "$ALL_FLAGS"
     return
   fi
 
@@ -238,7 +238,7 @@ main() {
   STANDALONE_INSTALL_PREFIX=${STANDALONE_INSTALL_PREFIX:-$HOME/.local}
   VERSION=${VERSION:-$(echo_latest_version)}
   # These can be overridden for testing but shouldn't normally be used as it can
-  # result in a broken code-server.
+  # result in a broken innovatex-ide.
   OS=${OS:-$(os)}
   ARCH=${ARCH:-$(arch)}
 
@@ -248,7 +248,7 @@ main() {
   if [ "$METHOD" = standalone ]; then
     if has_standalone; then
       install_standalone
-      echo_coder_postinstall
+      echo_innovatex_postinstall
       exit 0
     else
       echoerr "There are no standalone releases for $ARCH"
@@ -258,7 +258,7 @@ main() {
   fi
 
   # DISTRO can be overridden for testing but shouldn't normally be used as it
-  # can result in a broken code-server.
+  # can result in a broken innovatex-ide.
   DISTRO=${DISTRO:-$(distro)}
 
   case $DISTRO in
@@ -293,7 +293,7 @@ main() {
       ;;
   esac
 
-  echo_coder_postinstall
+  echo_innovatex_postinstall
 }
 
 parse_arg() {
@@ -350,7 +350,7 @@ install_brew() {
   echoh "Installing latest from Homebrew."
   echoh
 
-  sh_c "$BREW_PATH" install code-server
+  sh_c "$BREW_PATH" install innovatex-ide
 
   echo_brew_postinstall
 }
@@ -359,9 +359,9 @@ install_deb() {
   echoh "Installing v$VERSION of the $ARCH deb package from GitHub."
   echoh
 
-  fetch "https://github.com/coder/code-server/releases/download/v$VERSION/code-server_${VERSION}_$ARCH.deb" \
-    "$CACHE_DIR/code-server_${VERSION}_$ARCH.deb"
-  sudo_sh_c dpkg -i "$CACHE_DIR/code-server_${VERSION}_$ARCH.deb"
+  fetch "https://github.com/innovatex/innovatex-ide/releases/download/v$VERSION/innovatex-ide_${VERSION}_$ARCH.deb" \
+    "$CACHE_DIR/innovatex-ide_${VERSION}_$ARCH.deb"
+  sudo_sh_c dpkg -i "$CACHE_DIR/innovatex-ide_${VERSION}_$ARCH.deb"
 
   echo_systemd_postinstall deb
 }
@@ -370,9 +370,9 @@ install_rpm() {
   echoh "Installing v$VERSION of the $ARCH rpm package from GitHub."
   echoh
 
-  fetch "https://github.com/coder/code-server/releases/download/v$VERSION/code-server-$VERSION-$ARCH.rpm" \
-    "$CACHE_DIR/code-server-$VERSION-$ARCH.rpm"
-  sudo_sh_c rpm -U "$CACHE_DIR/code-server-$VERSION-$ARCH.rpm"
+  fetch "https://github.com/innovatex/innovatex-ide/releases/download/v$VERSION/innovatex-ide-$VERSION-$ARCH.rpm" \
+    "$CACHE_DIR/innovatex-ide-$VERSION-$ARCH.rpm"
+  sudo_sh_c rpm -U "$CACHE_DIR/innovatex-ide-$VERSION-$ARCH.rpm"
 
   echo_systemd_postinstall rpm
 }
@@ -381,11 +381,11 @@ install_aur() {
   echoh "Installing latest from the AUR."
   echoh
 
-  sh_c mkdir -p "$CACHE_DIR/code-server-aur"
-  sh_c "curl -#fsSL https://aur.archlinux.org/cgit/aur.git/snapshot/code-server.tar.gz | tar -xzC $CACHE_DIR/code-server-aur --strip-components 1"
-  echo "+ cd $CACHE_DIR/code-server-aur"
+  sh_c mkdir -p "$CACHE_DIR/innovatex-ide-aur"
+  sh_c "curl -#fsSL https://aur.archlinux.org/cgit/aur.git/snapshot/innovatex-ide.tar.gz | tar -xzC $CACHE_DIR/innovatex-ide-aur --strip-components 1"
+  echo "+ cd $CACHE_DIR/innovatex-ide-aur"
   if [ ! "${DRY_RUN-}" ]; then
-    cd "$CACHE_DIR/code-server-aur"
+    cd "$CACHE_DIR/innovatex-ide-aur"
   fi
   sh_c makepkg -si --noconfirm
 
@@ -396,8 +396,8 @@ install_standalone() {
   echoh "Installing v$VERSION of the $ARCH release from GitHub."
   echoh
 
-  fetch "https://github.com/coder/code-server/releases/download/v$VERSION/code-server-$VERSION-$OS-$ARCH.tar.gz" \
-    "$CACHE_DIR/code-server-$VERSION-$OS-$ARCH.tar.gz"
+  fetch "https://github.com/innovatex/innovatex-ide/releases/download/v$VERSION/innovatex-ide-$VERSION-$OS-$ARCH.tar.gz" \
+    "$CACHE_DIR/innovatex-ide-$VERSION-$OS-$ARCH.tar.gz"
 
   # -w only works if the directory exists so try creating it first. If this
   # fails we can ignore the error as the -w check will then swap us to sudo.
@@ -408,17 +408,17 @@ install_standalone() {
     sh_c="sudo_sh_c"
   fi
 
-  if [ -e "$STANDALONE_INSTALL_PREFIX/lib/code-server-$VERSION" ]; then
+  if [ -e "$STANDALONE_INSTALL_PREFIX/lib/innovatex-ide-$VERSION" ]; then
     echoh
-    echoh "code-server-$VERSION is already installed at $STANDALONE_INSTALL_PREFIX/lib/code-server-$VERSION"
+    echoh "innovatex-ide-$VERSION is already installed at $STANDALONE_INSTALL_PREFIX/lib/innovatex-ide-$VERSION"
     echoh "Remove it to reinstall."
     exit 0
   fi
 
   "$sh_c" mkdir -p "$STANDALONE_INSTALL_PREFIX/lib" "$STANDALONE_INSTALL_PREFIX/bin"
-  "$sh_c" tar -C "$STANDALONE_INSTALL_PREFIX/lib" -xzf "$CACHE_DIR/code-server-$VERSION-$OS-$ARCH.tar.gz"
-  "$sh_c" mv -f "$STANDALONE_INSTALL_PREFIX/lib/code-server-$VERSION-$OS-$ARCH" "$STANDALONE_INSTALL_PREFIX/lib/code-server-$VERSION"
-  "$sh_c" ln -fs "$STANDALONE_INSTALL_PREFIX/lib/code-server-$VERSION/bin/code-server" "$STANDALONE_INSTALL_PREFIX/bin/code-server"
+  "$sh_c" tar -C "$STANDALONE_INSTALL_PREFIX/lib" -xzf "$CACHE_DIR/innovatex-ide-$VERSION-$OS-$ARCH.tar.gz"
+  "$sh_c" mv -f "$STANDALONE_INSTALL_PREFIX/lib/innovatex-ide-$VERSION-$OS-$ARCH" "$STANDALONE_INSTALL_PREFIX/lib/innovatex-ide-$VERSION"
+  "$sh_c" ln -fs "$STANDALONE_INSTALL_PREFIX/lib/innovatex-ide-$VERSION/bin/innovatex-ide" "$STANDALONE_INSTALL_PREFIX/bin/innovatex-ide"
 
   echo_standalone_postinstall
 }
@@ -436,13 +436,13 @@ install_npm() {
     fi
     echoh "Installing with npm."
     echoh
-    "$sh_c" "$NPM_PATH" install -g "code-server@$VERSION" --unsafe-perm
+    "$sh_c" "$NPM_PATH" install -g "innovatex-ide@$VERSION" --unsafe-perm
     NPM_BIN_DIR="\$($NPM_PATH bin -g)" echo_npm_postinstall
     return
   fi
-  echoerr "Please install npm to install code-server!"
+  echoerr "Please install npm to install innovatex-ide!"
   echoerr "You will need at least node v20 and a few C dependencies."
-  echoerr "See the docs https://coder.com/docs/code-server/latest/install#npm"
+  echoerr "See the docs https://innovatex.com/docs/innovatex-ide/latest/install#npm"
 
   exit 1
 }
@@ -578,11 +578,11 @@ sudo_sh_c() {
 
 echo_cache_dir() {
   if [ "${XDG_CACHE_HOME-}" ]; then
-    echo "$XDG_CACHE_HOME/code-server"
+    echo "$XDG_CACHE_HOME/innovatex-ide"
   elif [ "${HOME-}" ]; then
-    echo "$HOME/.cache/code-server"
+    echo "$HOME/.cache/innovatex-ide"
   else
-    echo "/tmp/code-server-cache"
+    echo "/tmp/innovatex-ide-cache"
   fi
 }
 

@@ -4,10 +4,10 @@ set -euo pipefail
 help() {
   echo >&2 "  You can build the release with 'KEEP_MODULES=1 npm run release'"
   echo >&2 "  Or you can pass in a custom path."
-  echo >&2 "  CODE_SERVER_PATH='/var/tmp/coder/code-server/bin/code-server' npm run test:integration"
+  echo >&2 "  CODE_SERVER_PATH='/var/tmp/innovatex/innovatex-ide/bin/innovatex-ide' npm run test:integration"
 }
 
-# Make sure a code-server release works. You can pass in the path otherwise it
+# Make sure a innovatex-ide release works. You can pass in the path otherwise it
 # will look for $RELEASE_PATH in the current directory.
 #
 # This is to make sure we don't have Node version errors or any other
@@ -17,17 +17,17 @@ main() {
 
   source ./ci/lib.sh
 
-  local path="$RELEASE_PATH/bin/code-server"
+  local path="$RELEASE_PATH/bin/innovatex-ide"
   if [[ ! ${CODE_SERVER_PATH-} ]]; then
-    echo "Set CODE_SERVER_PATH to test another build of code-server"
+    echo "Set CODE_SERVER_PATH to test another build of innovatex-ide"
   else
     path="$CODE_SERVER_PATH"
   fi
 
-  echo "Running tests with code-server binary: '$path'"
+  echo "Running tests with innovatex-ide binary: '$path'"
 
   if [[ ! -f $path ]]; then
-    echo >&2 "No code-server build detected"
+    echo >&2 "No innovatex-ide build detected"
     echo >&2 "Looked in $path"
     help
     exit 1

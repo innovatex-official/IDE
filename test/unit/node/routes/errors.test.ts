@@ -27,7 +27,7 @@ describe("error page is rendered for text/html requests", () => {
       statusCode: 404,
       message: "Not found",
     }
-    const req = await createRequest({ "app-name": "MyCodeServer" })
+    const req = await createRequest({ "app-name": "MyInnovateXIDE" })
     const res = {
       status: jest.fn().mockReturnValue(this),
       send: jest.fn().mockReturnValue(this),
@@ -35,10 +35,10 @@ describe("error page is rendered for text/html requests", () => {
     } as unknown as express.Response
 
     await errorHandler(err, req, res, jest.fn())
-    expect(res.send).toHaveBeenCalledWith(expect.stringContaining("<title>404 - MyCodeServer</title>"))
+    expect(res.send).toHaveBeenCalledWith(expect.stringContaining("<title>404 - MyInnovateXIDE</title>"))
   })
 
-  it("should use default 'code-server' when app-name is not set", async () => {
+  it("should use default 'innovatex-ide' when app-name is not set", async () => {
     const err = {
       statusCode: 500,
       message: "Internal error",
@@ -51,7 +51,7 @@ describe("error page is rendered for text/html requests", () => {
     } as unknown as express.Response
 
     await errorHandler(err, req, res, jest.fn())
-    expect(res.send).toHaveBeenCalledWith(expect.stringContaining("<title>500 - code-server</title>"))
+    expect(res.send).toHaveBeenCalledWith(expect.stringContaining("<title>500 - innovatex-ide</title>"))
   })
 })
 

@@ -1,4 +1,4 @@
-import { field, logger } from "@coder/logger"
+import { field, logger } from "@innovatex/logger"
 import http from "http"
 import * as os from "os"
 import * as path from "path"
@@ -119,7 +119,7 @@ export const openInExistingInstance = async (args: DefaultedArgs, socketPath: st
   vscode.end()
 }
 
-export const runCodeServer = async (
+export const runInnovateXIDE = async (
   args: DefaultedArgs,
 ): Promise<{ dispose: Disposable["dispose"]; server: http.Server }> => {
   logger.info(`innovatex-ide ${version} ${commit}`)

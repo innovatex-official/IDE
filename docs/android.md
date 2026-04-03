@@ -1,4 +1,4 @@
-# Running code-server using UserLAnd
+# Running innovatex-ide using UserLAnd
 
 1. Install UserLAnd from [Google Play](https://play.google.com/store/apps/details?id=tech.ula&hl=en_US&gl=US)
 2. Install an Ubuntu VM
@@ -18,14 +18,14 @@ nvm install 22
 nvm use 22
 ```
 
-8. Install code-server globally on device with: `npm install --global code-server`
-9. Run code-server with `code-server`
+8. Install innovatex-ide globally on device with: `npm install --global innovatex-ide`
+9. Run innovatex-ide with `innovatex-ide`
 10. Access on localhost:8080 in your browser
 
-# Running code-server using Nix-on-Droid
+# Running innovatex-ide using Nix-on-Droid
 
 1. Install Nix-on-Droid from [F-Droid](https://f-droid.org/packages/com.termux.nix/)
 2. Start app
-3. Spawn a shell with code-server by running `nix-shell -p code-server`
-4. Run code-server with `code-server`
+3. Spawn a shell with innovatex-ide by running `nix-shell -p innovatex-ide`
+4. Run innovatex-ide with `innovatex-ide`
 5. Access on localhost:8080 in your browser

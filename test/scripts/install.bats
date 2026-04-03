@@ -72,7 +72,7 @@ function should-use-standalone() {
 @test "$SCRIPT_NAME: usage with --help" {
   run "$SCRIPT" --help
   [ "$status" -eq 0 ]
-  [ "${lines[0]}" = "Installs code-server." ]
+  [ "${lines[0]}" = "Installs innovatex-ide." ]
   [[ "${lines[-1]}" = "More installation docs are at"* ]]
 }
 

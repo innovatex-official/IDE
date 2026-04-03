@@ -11,17 +11,17 @@ if [ "${DOCKER_USER-}" ]; then
     echo "$DOCKER_USER ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers.d/nopasswd > /dev/null
     # Unfortunately we cannot change $HOME as we cannot move any bind mounts
     # nor can we bind mount $HOME into a new home as that requires a privileged container.
-    sudo usermod --login "$DOCKER_USER" coder
-    sudo groupmod -n "$DOCKER_USER" coder
+    sudo usermod --login "$DOCKER_USER" innovatex
+    sudo groupmod -n "$DOCKER_USER" innovatex
 
-    sudo sed -i "/coder/d" /etc/sudoers.d/nopasswd
+    sudo sed -i "/innovatex/d" /etc/sudoers.d/nopasswd
   fi
 fi
 
 # Allow users to have scripts run on container startup to prepare workspace.
-# https://github.com/coder/code-server/issues/5177
+# https://github.com/innovatex/innovatex-ide/issues/5177
 if [ -d "${ENTRYPOINTD}" ]; then
   find "${ENTRYPOINTD}" -type f -executable -print -exec {} \;
 fi
 
-exec catatonit -- /usr/bin/code-server "$@"
+exec catatonit -- /usr/bin/innovatex-ide "$@"

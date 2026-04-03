@@ -1,4 +1,4 @@
-import { logger } from "@coder/logger"
+import { logger } from "@innovatex/logger"
 import * as express from "express"
 import * as http from "http"
 import nodeFetch, { RequestInit, Response } from "node-fetch"

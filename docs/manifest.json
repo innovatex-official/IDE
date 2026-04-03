@@ -3,63 +3,63 @@
   "routes": [
     {
       "title": "Home",
-      "description": "Learn how to install and run code-server.",
+      "description": "Learn how to install and run innovatex-ide.",
       "path": "./README.md",
       "icon_path": "assets/images/icons/home.svg"
     },
     {
       "title": "Requirements",
-      "description": "Learn about what you need to run code-server.",
+      "description": "Learn about what you need to run innovatex-ide.",
       "icon_path": "assets/images/icons/requirements.svg",
       "path": "./requirements.md"
     },
     {
       "title": "Install",
-      "description": "How to install code-server.",
+      "description": "How to install innovatex-ide.",
       "icon_path": "assets/images/icons/wrench.svg",
       "path": "./install.md",
       "children": [
         {
           "title": "npm",
-          "description": "How to install code-server using npm",
+          "description": "How to install innovatex-ide using npm",
           "path": "./npm.md"
         },
         {
           "title": "Helm",
-          "description": "How to install code-server using the Helm package manager",
+          "description": "How to install innovatex-ide using the Helm package manager",
           "path": "./helm.md"
         }
       ]
     },
     {
       "title": "Usage",
-      "description": "How to set up and use code-server.",
+      "description": "How to set up and use innovatex-ide.",
       "icon_path": "assets/images/icons/usage.svg",
       "path": "./guide.md",
       "children": [
         {
           "title": "Coder",
-          "description": "How to run code-server in Coder",
-          "path": "./coder.md"
+          "description": "How to run innovatex-ide in Coder",
+          "path": "./innovatex.md"
         },
         {
           "title": "iPad",
-          "description": "How to access your code-server installation using an iPad.",
+          "description": "How to access your innovatex-ide installation using an iPad.",
           "path": "./ipad.md"
         },
         {
           "title": "Termux",
-          "description": "How to install Termux to run code-server on an Android device.",
+          "description": "How to install Termux to run innovatex-ide on an Android device.",
           "path": "./termux.md"
         },
         {
           "title": "iOS",
-          "description": "How to use code-server on iOS with iSH.",
+          "description": "How to use innovatex-ide on iOS with iSH.",
           "path": "./ios.md"
         },
         {
           "title": "Android",
-          "description": "How to run code-server on an Android device using UserLAnd.",
+          "description": "How to run innovatex-ide on an Android device using UserLAnd.",
           "path": "./android.md"
         }
       ]
@@ -72,40 +72,40 @@
     },
     {
       "title": "Upgrade",
-      "description": "How to upgrade code-server.",
+      "description": "How to upgrade innovatex-ide.",
       "icon_path": "assets/images/icons/upgrade.svg",
       "path": "./upgrade.md"
     },
     {
       "title": "FAQ",
-      "description": "Frequently asked questions on installing and running code-server.",
+      "description": "Frequently asked questions on installing and running innovatex-ide.",
       "icon_path": "assets/images/icons/faq.svg",
       "path": "./FAQ.md"
     },
     {
       "title": "Contributing",
-      "description": "How to contribute to code-server.",
+      "description": "How to contribute to innovatex-ide.",
       "icon_path": "assets/images/icons/contributing.svg",
       "path": "./CONTRIBUTING.md",
       "children": [
         {
           "title": "Code of conduct",
-          "description": "Coder expects contributors to code-server to behave in a manner that creates an open and welcoming environment.",
+          "description": "Coder expects contributors to innovatex-ide to behave in a manner that creates an open and welcoming environment.",
           "path": "./CODE_OF_CONDUCT.md"
         },
         {
           "title": "Maintenance",
-          "description": "Learn about the workflow followed by code-server's maintainers.",
+          "description": "Learn about the workflow followed by innovatex-ide's maintainers.",
           "path": "./MAINTAINING.md"
         },
         {
           "title": "Triage",
-          "description": "How the maintainers triage issues with code-server.",
+          "description": "How the maintainers triage issues with innovatex-ide.",
           "path": "./triage.md"
         },
         {
           "title": "Security",
-          "description": "Learn about the tools used to detect vulnerabilities in code-server, and how you can report vulnerabilities.",
+          "description": "Learn about the tools used to detect vulnerabilities in innovatex-ide, and how you can report vulnerabilities.",
           "path": "./SECURITY.md"
         }
       ]

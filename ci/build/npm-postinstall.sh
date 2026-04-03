@@ -66,7 +66,7 @@ main() {
   fi
 
   if [ "$major_node_version" -ne "${FORCE_NODE_VERSION:-22}" ]; then
-    echo "ERROR: code-server currently requires node v22."
+    echo "ERROR: innovatex-ide currently requires node v22."
     if [ -n "$FORCE_NODE_VERSION" ]; then
       echo "However, you have overrided the version check to use v$FORCE_NODE_VERSION."
     fi
@@ -81,7 +81,7 @@ main() {
   if is_root; then
     case "${npm_config_user_agent-}" in npm*)
       if [ "${npm_config_unsafe_perm-}" != "true" ]; then
-        echo "Please pass --unsafe-perm to npm to install code-server"
+        echo "Please pass --unsafe-perm to npm to install innovatex-ide"
         echo "Otherwise post-install scripts will not have permissions to run"
         echo "See https://docs.npmjs.com/misc/config#unsafe-perm"
         echo "See https://stackoverflow.com/questions/49084929/npm-sudo-global-installation-unsafe-perm"
@@ -93,7 +93,7 @@ main() {
 
   if ! vscode_install; then
     echo "You may not have the required dependencies to build the native modules."
-    echo "Please see https://github.com/coder/code-server/blob/main/docs/npm.md"
+    echo "Please see https://github.com/innovatex/innovatex-ide/blob/main/docs/npm.md"
     exit 1
   fi
 
@@ -120,7 +120,7 @@ install_with_yarn_or_npm() {
       fi
       ;;
     *)
-      echo "Could not determine which package manager is being used to install code-server"
+      echo "Could not determine which package manager is being used to install innovatex-ide"
       exit 1
       ;;
   esac
@@ -134,7 +134,7 @@ vscode_install() {
     return 1
   fi
 
-  symlink_bin_script remote-cli code code-server
+  symlink_bin_script remote-cli code innovatex-ide
   symlink_bin_script helpers browser browser .sh
 
   cd extensions

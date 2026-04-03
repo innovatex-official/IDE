@@ -1,4 +1,4 @@
-import { logger } from "@coder/logger"
+import { logger } from "@innovatex/logger"
 import * as app from "../../../src/node/app"
 import { EditorSessionManager, makeEditorSessionManagerServer } from "../../../src/node/vscodeSocket"
 import { clean, tmpdir, listenOn, mockLogger } from "../../utils/helpers"
@@ -27,10 +27,10 @@ describe("makeEditorSessionManagerServer", () => {
       throw new Error()
     })
     const server = await makeEditorSessionManagerServer(
-      `${tmpDirPath}/code-server-ipc.sock`,
+      `${tmpDirPath}/innovatex-ide-ipc.sock`,
       new EditorSessionManager(),
     )
-    expect(logger.warn).toHaveBeenCalledWith(`Could not create socket at ${tmpDirPath}/code-server-ipc.sock`)
+    expect(logger.warn).toHaveBeenCalledWith(`Could not create socket at ${tmpDirPath}/innovatex-ide-ipc.sock`)
     server.close()
   })
 })

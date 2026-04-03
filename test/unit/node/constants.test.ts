@@ -1,4 +1,4 @@
-import { logger } from "@coder/logger"
+import { logger } from "@innovatex/logger"
 import path from "path"
 import * as semver from "semver"
 import { mockLogger } from "../../utils/helpers"
@@ -8,9 +8,9 @@ describe("constants", () => {
 
   describe("with package.json defined", () => {
     const mockPackageJson = {
-      name: "mock-code-server",
+      name: "mock-innovatex-ide",
       description: "Run VS Code on a remote server.",
-      repository: "https://github.com/coder/code-server",
+      repository: "https://github.com/innovatex/innovatex-ide",
       version: "1.0.0",
       commit: "f6b2be2838f4afb217c2fd8f03eafedd8d55ef9b",
     }
@@ -98,7 +98,7 @@ describe("constants", () => {
 
   describe("with incomplete package.json", () => {
     const mockPackageJson = {
-      name: "mock-code-server",
+      name: "mock-innovatex-ide",
     }
     const mockCodePackageJson = {
       name: "mock-vscode",

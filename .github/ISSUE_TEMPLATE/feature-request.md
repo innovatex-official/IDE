@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest an idea to improve code-server
+about: Suggest an idea to improve innovatex-ide
 labels: enhancement
 ---
 

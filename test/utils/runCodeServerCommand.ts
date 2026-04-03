@@ -4,13 +4,13 @@ import { promisify } from "util"
 
 /**
  *
- * A helper function for integration tests to run code-server commands.
+ * A helper function for integration tests to run innovatex-ide commands.
  */
-export async function runCodeServerCommand(
+export async function runInnovateXIDECommand(
   argv: string[],
   env?: NodeJS.ProcessEnv,
 ): Promise<{ stdout: string; stderr: string }> {
-  const CODE_SERVER_COMMAND = process.env.CODE_SERVER_PATH || path.resolve("../../release-standalone/bin/code-server")
+  const CODE_SERVER_COMMAND = process.env.CODE_SERVER_PATH || path.resolve("../../release-standalone/bin/innovatex-ide")
   const { stdout, stderr } = await promisify(exec)(`${CODE_SERVER_COMMAND} ${argv.join(" ")}`, {
     env: { ...process.env, ...env },
   })

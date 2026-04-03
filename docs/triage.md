@@ -1,6 +1,6 @@
 # Triage
 
-Triaging code-server issues is done with the following issue filter:
+Triaging innovatex-ide issues is done with the following issue filter:
 
 ```text
 is:issue is:open no:project sort:created-asc -label:blocked -label:upstream -label:waiting-for-info -label:extension-request
@@ -11,7 +11,7 @@ This will show issues that:
 1. Are open.
 1. Have no assigned project.
 1. Are not `blocked` or tagged for work by `upstream` (the VS Code core team).
-   If an upstream issue is detrimental to the code-server experience we may fix
+   If an upstream issue is detrimental to the innovatex-ide experience we may fix
    it in our patch instead of waiting for the VS Code team to fix it. Someone
    should periodically go through these issues to see if they can be unblocked!
 1. Are not labeled `waiting-for-info`.
@@ -28,8 +28,8 @@ This will show issues that:
 1. If more information is required, please ask the submitter and tag as
    `waiting-for-info` and wait.
 1. Finally, the issue should be moved into the
-   [code-server](https://github.com/coder/code-server/projects/1) project where we
+   [innovatex-ide](https://github.com/innovatex/innovatex-ide/projects/1) project where we
    pick out issues to fix and track their progress.
 
-We also use [milestones](https://github.com/coder/code-server/milestones) to track
+We also use [milestones](https://github.com/innovatex/innovatex-ide/milestones) to track
 what issues are planned/or were closed for what release.

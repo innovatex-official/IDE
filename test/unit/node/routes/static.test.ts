@@ -14,7 +14,7 @@ describe("/_static", () => {
   let _codeServer: httpserver.HttpServer | undefined
   function codeServer(): httpserver.HttpServer {
     if (!_codeServer) {
-      throw new Error("tried to use code-server before setting it up")
+      throw new Error("tried to use innovatex-ide before setting it up")
     }
     return _codeServer
   }

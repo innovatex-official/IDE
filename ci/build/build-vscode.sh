@@ -43,7 +43,7 @@ main() {
   # since Code tries to get the commit from the `.git` directory which will fail
   # as it is a submodule.
   #
-  # Also, we use code-server's commit rather than VS Code's otherwise it would
+  # Also, we use innovatex-ide's commit rather than VS Code's otherwise it would
   # not update when only our patch files change, and that will cause caching
   # issues where the browser keeps using outdated code.
   export BUILD_SOURCEVERSION
@@ -119,7 +119,7 @@ EOF
       fix-bin-script helpers/browser.cmd
       ;;
     *)
-      fix-bin-script remote-cli/code-server
+      fix-bin-script remote-cli/innovatex-ide
       fix-bin-script helpers/browser.sh
       ;;
   esac
@@ -127,7 +127,7 @@ EOF
   # Include bin scripts for other platforms so we can use the right one in the
   # NPM post-install.
 
-  # These provide a `code-server` command in the integrated terminal to open
+  # These provide a `innovatex-ide` command in the integrated terminal to open
   # files in the current instance.
   copy-bin-script remote-cli/code-darwin.sh
   copy-bin-script remote-cli/code-linux.sh

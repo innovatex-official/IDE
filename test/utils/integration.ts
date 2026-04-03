@@ -1,7 +1,7 @@
 import { promises as fs } from "fs"
 import * as path from "path"
 import { parse, parseConfigFile, setDefaults } from "../../src/node/cli"
-import { runCodeServer } from "../../src/node/main"
+import { runInnovateXIDE } from "../../src/node/main"
 import { workspaceDir } from "./constants"
 import { tmpdir } from "./helpers"
 import * as httpserver from "./httpserver"
@@ -25,7 +25,7 @@ export async function setup(argv: string[], configFile?: string): Promise<httpse
   const configArgs = parseConfigFile(configFile || "", "test/integration.ts")
   const args = await setDefaults(cliArgs, configArgs)
 
-  const server = await runCodeServer(args)
+  const server = await runInnovateXIDE(args)
 
   return new httpserver.HttpServer(server)
 }

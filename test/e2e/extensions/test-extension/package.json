@@ -1,8 +1,8 @@
 {
-  "name": "code-server-extension",
-  "description": "code-server test extension",
+  "name": "innovatex-ide-extension",
+  "description": "innovatex-ide test extension",
   "version": "0.0.1",
-  "publisher": "coder",
+  "publisher": "innovatex",
   "license": "MIT",
   "activationEvents": [
     "onStartupFinished"
@@ -16,12 +16,12 @@
       {
         "command": "codeServerTest.proxyUri",
         "title": "Get proxy URI",
-        "category": "code-server"
+        "category": "innovatex-ide"
       },
       {
         "command": "codeServerTest.asExternalUri",
         "title": "asExternalUri test",
-        "category": "code-server"
+        "category": "innovatex-ide"
       }
     ]
   },

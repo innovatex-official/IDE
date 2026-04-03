@@ -1,4 +1,4 @@
-import { field, logger } from "@coder/logger"
+import { field, logger } from "@innovatex/logger"
 import { promises as fs } from "fs"
 import * as net from "net"
 import * as path from "path"

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Builds code-server into out and the frontend into dist.
+# Builds innovatex-ide into out and the frontend into dist.
 
 main() {
   cd "$(dirname "${0}")/../.."

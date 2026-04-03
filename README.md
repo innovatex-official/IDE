@@ -7,7 +7,7 @@ Developed by **Suryanshu Nabheet**.
 - End-to-end coding support for students.
 - Accessible from anywhere in the browser.
 - High performance and clean codebase.
-- Based on VS Code (fork of code-server).
+- Based on VS Code (fork of innovatex-ide).
 
 ## Quick Start (Local)
 1. Clone the repository.

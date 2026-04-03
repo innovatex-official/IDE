@@ -6,10 +6,10 @@ not host our source maps there and want them to be self-hosted even if we could.
 
 To test try debugging/browsing the source of a build in a browser.
 
-Index: code-server/lib/vscode/build/gulpfile.reh.ts
+Index: innovatex-ide/lib/vscode/build/gulpfile.reh.ts
 ===================================================================
---- code-server.orig/lib/vscode/build/gulpfile.reh.ts
-+++ code-server/lib/vscode/build/gulpfile.reh.ts
+--- innovatex-ide.orig/lib/vscode/build/gulpfile.reh.ts
++++ innovatex-ide/lib/vscode/build/gulpfile.reh.ts
 @@ -263,8 +263,7 @@ function packageTask(type: string, platf
  	return () => {
  		const src = gulp.src(sourceFolderName + '/**', { base: '.' })

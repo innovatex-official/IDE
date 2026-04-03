@@ -2,7 +2,7 @@ import * as cp from "child_process"
 import { promises as fs } from "fs"
 import * as path from "path"
 import util from "util"
-import { clean, getMaybeProxiedCodeServer, tmpdir } from "../utils/helpers"
+import { clean, getMaybeProxiedInnovateXIDE, tmpdir } from "../utils/helpers"
 import { describe, expect, test } from "./baseFixture"
 
 describe("Integrated Terminal", ["--disable-workspace-trust"], {}, () => {
@@ -26,19 +26,19 @@ describe("Integrated Terminal", ["--disable-workspace-trust"], {}, () => {
     await codeServerPage.page.keyboard.press("Enter")
 
     const { stdout } = await output
-    const address = await getMaybeProxiedCodeServer(codeServerPage)
+    const address = await getMaybeProxiedInnovateXIDE(codeServerPage)
     expect(stdout).toMatch(address)
   })
 
-  // TODO@jsjoeio - add test to make sure full code-server path works
-  test("should be able to invoke `code-server` to open a file", async ({ codeServerPage }) => {
+  // TODO@jsjoeio - add test to make sure full innovatex-ide path works
+  test("should be able to invoke `innovatex-ide` to open a file", async ({ codeServerPage }) => {
     const tmpFolderPath = await tmpdir(testName)
     const tmpFile = path.join(tmpFolderPath, "test-file")
     await fs.writeFile(tmpFile, "test")
 
     await codeServerPage.focusTerminal()
 
-    await codeServerPage.page.keyboard.type(`code-server ${tmpFile}`)
+    await codeServerPage.page.keyboard.type(`innovatex-ide ${tmpFile}`)
     await codeServerPage.page.keyboard.press("Enter")
 
     await codeServerPage.waitForTab(path.basename(tmpFile))

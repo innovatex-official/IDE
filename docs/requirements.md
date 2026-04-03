@@ -1,6 +1,6 @@
 # Requirements
 
-You'll need a machine on which you can run code-server. You can use a physical
+You'll need a machine on which you can run innovatex-ide. You can use a physical
 machine you have, or you can use a VM on GCP/AWS.
 
 At the minimum, we recommend:
@@ -9,11 +9,11 @@ At the minimum, we recommend:
 - 2 CPU cores
 
 You can use any Linux distribution, but [our
-docs](https://coder.com/docs/code-server/latest/guide) assume that you're using
+docs](https://innovatex.com/docs/innovatex-ide/latest/guide) assume that you're using
 Debian hosted by Google Cloud (see the following section for instructions on
 setting this up).
 
-Your environment must have WebSockets enabled, since code-server uses WebSockets
+Your environment must have WebSockets enabled, since innovatex-ide uses WebSockets
 for communication between the browser and the server.
 
 ## Set up a VM on Google Cloud
@@ -53,4 +53,4 @@ Notes:
 
 - To lower costs, you can shut down your server when you're not using it.
 - We recommend using the `gcloud cli` to avoid using the GCP Dashboard if possible.
-- For serving code-server over HTTPS, we recommend using an external domain name along with a service such as Let's Encrypt
+- For serving innovatex-ide over HTTPS, we recommend using an external domain name along with a service such as Let's Encrypt

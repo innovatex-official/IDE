@@ -24,7 +24,7 @@ export const wsRouter = WsRouter()
  *
  * @see ../../../lib/vscode/src/vs/server/node/server.main.ts:72
  */
-export interface IVSCodeServerAPI {
+export interface IVSInnovateXIDEAPI {
   handleRequest(req: http.IncomingMessage, res: http.ServerResponse): Promise<void>
   handleUpgrade(req: http.IncomingMessage, socket: net.Socket): void
   handleServerError(err: Error): void
@@ -43,7 +43,7 @@ export type VSCodeModule = {
   // See ../../../lib/vscode/src/server-main.js:339.
   loadCodeWithNls(): Promise<{
     // See ../../../lib/vscode/src/vs/server/node/server.main.ts:72.
-    createServer(address: string | net.AddressInfo | null, args: CodeArgs): Promise<IVSCodeServerAPI>
+    createServer(address: string | net.AddressInfo | null, args: CodeArgs): Promise<IVSInnovateXIDEAPI>
     // See ../../../lib/vscode/src/vs/server/node/server.main.ts:65.
     spawnCli(args: CodeArgs): Promise<void>
   }>
@@ -52,7 +52,7 @@ export type VSCodeModule = {
 /**
  * Load then create the VS Code server.
  */
-async function loadVSCode(req: express.Request): Promise<IVSCodeServerAPI> {
+async function loadVSCode(req: express.Request): Promise<IVSInnovateXIDEAPI> {
   // Since server-main.js is an ES module, we have to use `import`.  However,
   // tsc will transpile this to `require` unless we change our module type,
   // which will also require that we switch to ESM, since a hybrid approach
@@ -77,11 +77,11 @@ async function loadVSCode(req: express.Request): Promise<IVSCodeServerAPI> {
 
 // To prevent loading the module more than once at a time.  We also have the
 // resolved value so you do not need to `await` everywhere.
-let vscodeServerPromise: Promise<IVSCodeServerAPI> | undefined
+let vscodeServerPromise: Promise<IVSInnovateXIDEAPI> | undefined
 
 // The resolved value from the dynamically loaded VS Code server.  Do not use
-// without first calling and awaiting `ensureCodeServerLoaded`.
-let vscodeServer: IVSCodeServerAPI | undefined
+// without first calling and awaiting `ensureInnovateXIDELoaded`.
+let vscodeServer: IVSInnovateXIDEAPI | undefined
 
 /**
  * Ensure the VS Code server is loaded.
@@ -101,7 +101,7 @@ export const ensureVSCodeLoaded = async (
     vscodeServer = await vscodeServerPromise
   } catch (error) {
     vscodeServerPromise = undefined // Unset so we can try again.
-    logError(logger, "CodeServerRouteWrapper", error)
+    logError(logger, "InnovateXIDERouteWrapper", error)
     if (isDevMode) {
       return next(
         new Error(

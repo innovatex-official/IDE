@@ -1,4 +1,4 @@
-import { field, Logger, logger } from "@coder/logger"
+import { field, Logger, logger } from "@innovatex/logger"
 import * as cp from "child_process"
 import { promises as fs } from "fs"
 import * as path from "path"
@@ -7,9 +7,9 @@ import * as util from "util"
 import { logError, normalize, plural } from "../../../src/common/util"
 import { onLine } from "../../../src/node/util"
 import { PASSWORD, workspaceDir } from "../../utils/constants"
-import { getMaybeProxiedCodeServer, idleTimer, tmpdir } from "../../utils/helpers"
+import { getMaybeProxiedInnovateXIDE, idleTimer, tmpdir } from "../../utils/helpers"
 
-interface CodeServerProcess {
+interface InnovateXIDEProcess {
   process: cp.ChildProcess
   address: string
 }
@@ -32,10 +32,10 @@ class Context {
 }
 
 /**
- * Class for spawning and managing code-server.
+ * Class for spawning and managing innovatex-ide.
  */
-export class CodeServer {
-  private process: Promise<CodeServerProcess> | undefined
+export class InnovateXIDE {
+  private process: Promise<InnovateXIDEProcess> | undefined
   public readonly logger: Logger
   private closed = false
 
@@ -50,7 +50,7 @@ export class CodeServer {
   }
 
   /**
-   * The address at which code-server can be accessed. Spawns code-server if it
+   * The address at which innovatex-ide can be accessed. Spawns innovatex-ide if it
    * has not yet been spawned.
    */
   async address(): Promise<string> {
@@ -63,7 +63,7 @@ export class CodeServer {
   }
 
   /**
-   * The workspace directory code-server opens with.
+   * The workspace directory innovatex-ide opens with.
    */
   get workspaceDir(): Promise<string> | string {
     if (!this._workspaceDir) {
@@ -106,17 +106,17 @@ export class CodeServer {
       },
     }
 
-    // NOTE@jsjoeio - code-server should automatically generate the languagepacks.json for
+    // NOTE@jsjoeio - innovatex-ide should automatically generate the languagepacks.json for
     // using different display languages. This is a temporary workaround until we fix that.
     await fs.writeFile(path.join(dir, "languagepacks.json"), JSON.stringify(languagepacksContent))
     return dir
   }
 
   /**
-   * Spawn a new code-server process with its own workspace and data
+   * Spawn a new innovatex-ide process with its own workspace and data
    * directories.
    */
-  private async spawn(): Promise<CodeServerProcess> {
+  private async spawn(): Promise<InnovateXIDEProcess> {
     const dir = await this.createWorkspace()
     const args = await this.argsWithDefaults([
       "--auth",
@@ -135,7 +135,7 @@ export class CodeServer {
         env: {
           ...process.env,
           ...this.env,
-          // Prevent code-server from using the existing instance when running
+          // Prevent innovatex-ide from using the existing instance when running
           // the e2e tests from an integrated terminal.
           VSCODE_IPC_HOOK_CLI: "",
           PASSWORD,
@@ -151,7 +151,7 @@ export class CodeServer {
       })
 
       proc.on("close", (code) => {
-        const error = new Error("code-server closed unexpectedly. Try running with LOG_LEVEL=debug to see more info.")
+        const error = new Error("innovatex-ide closed unexpectedly. Try running with LOG_LEVEL=debug to see more info.")
         if (!this.closed) {
           this.logger.error(error.message, field("code", code))
         }
@@ -180,7 +180,7 @@ export class CodeServer {
         let match = line.trim().match(/HTTPS? server listening on (https?:\/\/[.:\d]+)\/?$/)
         if (match) {
           // Cookies don't seem to work on IP addresses so swap to localhost.
-          // TODO: Investigate whether this is a bug with code-server.
+          // TODO: Investigate whether this is a bug with innovatex-ide.
           httpAddress = match[1].replace("127.0.0.1", "localhost")
         }
 
@@ -192,7 +192,7 @@ export class CodeServer {
         if (typeof httpAddress !== "undefined" && typeof sessionAddress !== "undefined") {
           resolved = true
           timer.dispose()
-          this.logger.debug(`code-server is ready: ${httpAddress} ${sessionAddress}`)
+          this.logger.debug(`innovatex-ide is ready: ${httpAddress} ${sessionAddress}`)
           resolve({ process: proc, address: httpAddress })
         }
       })
@@ -210,7 +210,7 @@ export class CodeServer {
       env: {
         ...process.env,
         ...this.env,
-        // Prevent code-server from using the existing instance when running
+        // Prevent innovatex-ide from using the existing instance when running
         // the e2e tests from an integrated terminal.
         VSCODE_IPC_HOOK_CLI: "",
       },
@@ -240,7 +240,7 @@ export class CodeServer {
   }
 
   /**
-   * Close the code-server process.
+   * Close the innovatex-ide process.
    */
   async close(): Promise<void> {
     logger.debug("closing")
@@ -262,15 +262,15 @@ export class CodeServer {
 /**
  * This is a "Page Object Model" (https://playwright.dev/docs/pom/) meant to
  * wrap over a page and represent actions on that page in a more readable way.
- * This targets a specific code-server instance which must be passed in.
- * Navigation and setup performed by this model will cause the code-server
+ * This targets a specific innovatex-ide instance which must be passed in.
+ * Navigation and setup performed by this model will cause the innovatex-ide
  * process to spawn if it hasn't yet.
  */
-export class CodeServerPage {
+export class InnovateXIDEPage {
   private readonly editorSelector = "div.monaco-workbench"
 
   constructor(
-    private readonly codeServer: CodeServer,
+    private readonly codeServer: InnovateXIDE,
     public readonly page: Page,
   ) {
     this.page.on("console", (message) => {
@@ -286,18 +286,18 @@ export class CodeServerPage {
   }
 
   /**
-   * The workspace directory code-server opens with.
+   * The workspace directory innovatex-ide opens with.
    */
   get workspaceDir() {
     return this.codeServer.workspaceDir
   }
 
   /**
-   * Navigate to a code-server endpoint (root by default).  Then wait for the
+   * Navigate to a innovatex-ide endpoint (root by default).  Then wait for the
    * editor to become available.
    */
   async navigate(endpoint = "/") {
-    const address = await getMaybeProxiedCodeServer(this.codeServer)
+    const address = await getMaybeProxiedInnovateXIDE(this.codeServer)
     const noramlizedUrl = normalize(address + endpoint, true)
     const to = new URL(noramlizedUrl)
 
@@ -323,7 +323,7 @@ export class CodeServerPage {
     const editorIsVisible = await this.isEditorVisible()
     let reloadCount = 0
 
-    // Occassionally code-server timeouts in Firefox
+    // Occassionally innovatex-ide timeouts in Firefox
     // we're not sure why
     // but usually a reload or two fixes it
     // TODO@jsjoeio @oxy look into Firefox reconnection/timeout issues

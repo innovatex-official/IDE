@@ -1,5 +1,5 @@
 import { clean, tmpdir } from "../utils/helpers"
-import { runCodeServerCommand } from "../utils/runCodeServerCommand"
+import { runInnovateXIDECommand } from "../utils/runInnovateXIDECommand"
 
 describe("--install-extension", () => {
   const testName = "installExtension"
@@ -14,7 +14,7 @@ describe("--install-extension", () => {
   it("should use EXTENSIONS_GALLERY when set", async () => {
     const extName = "author.extension"
     await expect(
-      runCodeServerCommand([...setupFlags, "--install-extension", extName], {
+      runInnovateXIDECommand([...setupFlags, "--install-extension", extName], {
         EXTENSIONS_GALLERY: "{}",
       }),
     ).rejects.toThrow("No extension gallery service configured")

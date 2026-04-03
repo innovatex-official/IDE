@@ -1,7 +1,7 @@
-import { logger } from "@coder/logger"
+import { logger } from "@innovatex/logger"
 import { optionDescriptions, parse, readConfigFile, setDefaults, shouldOpenInExistingInstance } from "./cli"
 import { getVersionString, getVersionJsonString } from "./constants"
-import { openInExistingInstance, runCodeServer, runCodeCli, shouldSpawnCliProcess } from "./main"
+import { openInExistingInstance, runInnovateXIDE, runCodeCli, shouldSpawnCliProcess } from "./main"
 import { isChild, wrapper } from "./wrapper"
 
 async function entry(): Promise<void> {
@@ -14,7 +14,7 @@ async function entry(): Promise<void> {
   if (isChild(wrapper)) {
     const args = await wrapper.handshake()
     wrapper.preventExit()
-    const server = await runCodeServer(args)
+    const server = await runInnovateXIDE(args)
     wrapper.onDispose(() => server.dispose())
     return
   }

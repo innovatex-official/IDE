@@ -10,7 +10,7 @@ jest.mock("../../../src/node/i18n", () => ({
 }))
 
 // Mock logger to avoid console output during tests
-jest.mock("@coder/logger", () => ({
+jest.mock("@innovatex/logger", () => ({
   logger: {
     info: jest.fn(),
     debug: jest.fn(),
@@ -36,7 +36,7 @@ describe("main", () => {
   let mockServer: any
 
   beforeEach(async () => {
-    tempDir = await tmpdir("code-server-main-test")
+    tempDir = await tmpdir("innovatex-ide-main-test")
 
     // Reset mocks
     jest.clearAllMocks()
@@ -64,7 +64,7 @@ describe("main", () => {
     }
   })
 
-  describe("runCodeServer", () => {
+  describe("runInnovateXIDE", () => {
     it("should load custom strings when i18n flag is provided", async () => {
       // Create a test custom strings file
       const customStringsFile = path.join(tempDir, "custom-strings.json")
@@ -101,9 +101,9 @@ describe("main", () => {
       // Mock loadCustomStrings to succeed
       mockedLoadCustomStrings.mockResolvedValue(undefined)
 
-      // Import runCodeServer after mocking
+      // Import runInnovateXIDE after mocking
       const mainModule = await import("../../../src/node/main")
-      const result = await mainModule.runCodeServer(args)
+      const result = await mainModule.runInnovateXIDE(args)
 
       // Verify that loadCustomStrings was called with the correct file path
       expect(mockedLoadCustomStrings).toHaveBeenCalledWith(customStringsFile)
@@ -135,9 +135,9 @@ describe("main", () => {
         register: jest.fn().mockResolvedValue({ disposeRoutes: jest.fn() }),
       }))
 
-      // Import runCodeServer after mocking
+      // Import runInnovateXIDE after mocking
       const mainModule = await import("../../../src/node/main")
-      const result = await mainModule.runCodeServer(args)
+      const result = await mainModule.runInnovateXIDE(args)
 
       // Verify that loadCustomStrings was NOT called
       expect(mockedLoadCustomStrings).not.toHaveBeenCalled()
@@ -163,11 +163,11 @@ describe("main", () => {
       const mockError = new Error("Custom strings file not found")
       mockedLoadCustomStrings.mockRejectedValue(mockError)
 
-      // Import runCodeServer after mocking
+      // Import runInnovateXIDE after mocking
       const mainModule = await import("../../../src/node/main")
 
-      // Verify that runCodeServer throws the error from loadCustomStrings
-      await expect(mainModule.runCodeServer(args)).rejects.toThrow("Custom strings file not found")
+      // Verify that runInnovateXIDE throws the error from loadCustomStrings
+      await expect(mainModule.runInnovateXIDE(args)).rejects.toThrow("Custom strings file not found")
 
       // Verify that loadCustomStrings was called
       expect(mockedLoadCustomStrings).toHaveBeenCalledWith(nonExistentFile)

@@ -45,7 +45,7 @@ describe("login", () => {
     let _codeServer: httpserver.HttpServer | undefined
     function codeServer(): httpserver.HttpServer {
       if (!_codeServer) {
-        throw new Error("tried to use code-server before setting it up")
+        throw new Error("tried to use innovatex-ide before setting it up")
       }
       return _codeServer
     }
@@ -104,7 +104,7 @@ describe("login", () => {
 
     it("should return correct app-name when unset", async () => {
       process.env.PASSWORD = previousEnvPassword
-      const appName = "code-server"
+      const appName = "innovatex-ide"
       const codeServer = await integration.setup([], "")
       const resp = await codeServer.fetch("/login", { method: "GET" })
 
@@ -144,7 +144,7 @@ describe("login", () => {
 
       const htmlContent = await resp.text()
       expect(resp.status).toBe(200)
-      expect(htmlContent).toContain(`欢迎来到 code-server`)
+      expect(htmlContent).toContain(`欢迎来到 innovatex-ide`)
     })
   })
 })

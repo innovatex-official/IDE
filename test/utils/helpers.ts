@@ -1,9 +1,9 @@
-import { logger } from "@coder/logger"
+import { logger } from "@innovatex/logger"
 import { promises as fs } from "fs"
 import * as net from "net"
 import * as os from "os"
 import * as path from "path"
-import { CodeServer, CodeServerPage } from "../e2e/models/CodeServer"
+import { InnovateXIDE, InnovateXIDEPage } from "../e2e/models/InnovateXIDE"
 import { REVERSE_PROXY_PORT, REVERSE_PROXY_BASE_PATH } from "./constants"
 
 /**
@@ -30,7 +30,7 @@ export function mockLogger() {
  * starts to avoid potentially accumulating infinite test directories.
  */
 export async function clean(testName: string): Promise<void> {
-  const dir = path.join(os.tmpdir(), `code-server/tests/${testName}`)
+  const dir = path.join(os.tmpdir(), `innovatex-ide/tests/${testName}`)
   await fs.rm(dir, { force: true, recursive: true })
 }
 
@@ -40,7 +40,7 @@ export async function clean(testName: string): Promise<void> {
  * `tmpdir` should usually be preceeded by at least one call to `clean`.
  */
 export async function tmpdir(testName: string): Promise<string> {
-  const dir = path.join(os.tmpdir(), `code-server/tests/${testName}`)
+  const dir = path.join(os.tmpdir(), `innovatex-ide/tests/${testName}`)
   await fs.mkdir(dir, { recursive: true })
 
   return await fs.mkdtemp(path.join(dir, `${testName}-`), { encoding: "utf8" })
@@ -111,9 +111,9 @@ export function idleTimer(message: string, reject: (error: Error) => void, delay
 /**
  * If using a proxy, return the address of the proxy.
  *
- * Otherwise, return the direct address of code-server.
+ * Otherwise, return the direct address of innovatex-ide.
  */
-export async function getMaybeProxiedCodeServer(codeServer: CodeServerPage | CodeServer): Promise<string> {
+export async function getMaybeProxiedInnovateXIDE(codeServer: InnovateXIDEPage | InnovateXIDE): Promise<string> {
   const address = await codeServer.address()
   if (process.env.USE_PROXY === "1") {
     const uri = new URL(address)

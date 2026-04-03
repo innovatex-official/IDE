@@ -32,11 +32,11 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v6
 
-      - name: Install code-server
+      - name: Install innovatex-ide
         run: ./install.sh
 
-      - name: Test code-server was installed globally
-        run: code-server --help
+      - name: Test innovatex-ide was installed globally
+        run: innovatex-ide --help
 
   alpine:
     name: Test installer on Alpine
@@ -50,16 +50,16 @@ jobs:
         run: apk add curl
 
       - name: Add user
-        run: adduser coder --disabled-password
+        run: adduser innovatex --disabled-password
 
       # Standalone should work without root.
       - name: Test standalone to a non-existent prefix
-        run: su coder -c "./install.sh --method standalone --prefix /tmp/does/not/yet/exist"
+        run: su innovatex -c "./install.sh --method standalone --prefix /tmp/does/not/yet/exist"
 
-      # We do not actually have Alpine standalone builds so running code-server
+      # We do not actually have Alpine standalone builds so running innovatex-ide
       # will not work.
-      - name: Test code-server was installed to prefix
-        run: test -f /tmp/does/not/yet/exist/bin/code-server
+      - name: Test innovatex-ide was installed to prefix
+        run: test -f /tmp/does/not/yet/exist/bin/innovatex-ide
 
   macos:
     name: Test installer on macOS
@@ -69,8 +69,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v6
 
-      - name: Install code-server
+      - name: Install innovatex-ide
         run: ./install.sh
 
-      - name: Test code-server was installed globally
-        run: code-server --help
+      - name: Test innovatex-ide was installed globally
+        run: innovatex-ide --help

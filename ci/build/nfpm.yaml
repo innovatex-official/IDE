@@ -1,25 +1,25 @@
-name: "code-server"
+name: "innovatex-ide"
 arch: "${NFPM_ARCH}"
 platform: "linux"
 version: "v${VERSION}"
 section: "devel"
 priority: "optional"
-maintainer: "Joe Previte <joe@coder.com>"
+maintainer: "Joe Previte <joe@innovatex.com>"
 description: |
   Run VS Code in the browser.
 vendor: "Coder"
-homepage: "https://github.com/coder/code-server"
+homepage: "https://github.com/innovatex/innovatex-ide"
 license: "MIT"
 
 contents:
-  - src: ./ci/build/code-server-nfpm.sh
-    dst: /usr/bin/code-server
+  - src: ./ci/build/innovatex-ide-nfpm.sh
+    dst: /usr/bin/innovatex-ide
 
-  - src: ./ci/build/code-server@.service
-    dst: /usr/lib/systemd/system/code-server@.service
+  - src: ./ci/build/innovatex-ide@.service
+    dst: /usr/lib/systemd/system/innovatex-ide@.service
 
-  - src: ./ci/build/code-server-user.service
-    dst: /usr/lib/systemd/user/code-server.service
+  - src: ./ci/build/innovatex-ide-user.service
+    dst: /usr/lib/systemd/user/innovatex-ide.service
 
   - src: ./release/*
-    dst: /usr/lib/code-server
+    dst: /usr/lib/innovatex-ide

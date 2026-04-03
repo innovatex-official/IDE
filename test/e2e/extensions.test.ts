@@ -1,15 +1,15 @@
 import { test as base } from "@playwright/test"
 import * as path from "path"
-import { getMaybeProxiedCodeServer } from "../utils/helpers"
+import { getMaybeProxiedInnovateXIDE } from "../utils/helpers"
 import { describe, test, expect } from "./baseFixture"
 
 function runTestExtensionTests() {
-  // This will only work if the test extension is loaded into code-server.
+  // This will only work if the test extension is loaded into innovatex-ide.
   test("should have access to VSCODE_PROXY_URI", async ({ codeServerPage }) => {
-    const address = await getMaybeProxiedCodeServer(codeServerPage)
+    const address = await getMaybeProxiedInnovateXIDE(codeServerPage)
 
     await codeServerPage.waitForTestExtensionLoaded()
-    await codeServerPage.executeCommandViaMenus("code-server: Get proxy URI")
+    await codeServerPage.executeCommandViaMenus("innovatex-ide: Get proxy URI")
 
     // Remove end slash in address.
     const normalizedAddress = address.replace(/\/+$/, "")

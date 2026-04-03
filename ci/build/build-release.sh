@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Once both code-server and VS Code have been built, use this script to copy
+# Once both innovatex-ide and VS Code have been built, use this script to copy
 # them into a single directory (./release), prepare the package.json and
 # product.json, and add shrinkwraps.  This results in a generic NPM package that
 # we can publish to NPM.
@@ -43,10 +43,10 @@ main() {
     rsync "$node_path" "$RELEASE_PATH/lib/node"
     chmod 755 "$RELEASE_PATH/lib/node"
 
-    # Copy the code-server launcher.
+    # Copy the innovatex-ide launcher.
     mkdir -p "$RELEASE_PATH/bin"
-    rsync ./ci/build/code-server.sh "$RELEASE_PATH/bin/code-server"
-    chmod 755 "$RELEASE_PATH/bin/code-server"
+    rsync ./ci/build/innovatex-ide.sh "$RELEASE_PATH/bin/innovatex-ide"
+    chmod 755 "$RELEASE_PATH/bin/innovatex-ide"
 
     # Delete the extra bin scripts.
     rm "$RELEASE_PATH/lib/vscode/bin/remote-cli/code-darwin.sh"
@@ -139,15 +139,15 @@ create_shrinkwraps() {
   # package-lock.json files (used to ensure deterministic versions of
   # dependencies) are not packaged when publishing to the NPM registry.
   #
-  # To ensure deterministic dependency versions (even when code-server is
+  # To ensure deterministic dependency versions (even when innovatex-ide is
   # installed with NPM), we create an npm-shrinkwrap.json file from the
   # currently installed node_modules. This ensures the versions used from
   # development (that the package-lock.json guarantees) are also the ones
   # installed by end-users.  These will include devDependencies, but those will
-  # be ignored when installing globally (for code-server), and because we use
+  # be ignored when installing globally (for innovatex-ide), and because we use
   # --omit=dev (for VS Code).
 
-  # We first generate the shrinkwrap file for code-server itself - which is the
+  # We first generate the shrinkwrap file for innovatex-ide itself - which is the
   # current directory.
   cp package-lock.json package-lock.json.temp
   npm shrinkwrap

@@ -24,7 +24,7 @@ main() {
 }
 
 release_archive() {
-  local release_name="code-server-$VERSION-$OS-$ARCH"
+  local release_name="innovatex-ide-$VERSION-$OS-$ARCH"
   if [[ $OS == "linux" ]]; then
     tar -czf "release-packages/$release_name.tar.gz" --owner=0 --group=0 --transform "s/^$RELEASE_PATH/$release_name/" "$RELEASE_PATH"
   else
@@ -53,13 +53,13 @@ release_nfpm() {
   nfpm_config="$(envsubst < ./ci/build/nfpm.yaml)"
   echo "Building deb"
   echo "$nfpm_config" | head --lines=4
-  nfpm pkg -f <(echo "$nfpm_config") --target "release-packages/code-server_${VERSION}_${NFPM_ARCH}.deb"
+  nfpm pkg -f <(echo "$nfpm_config") --target "release-packages/innovatex-ide_${VERSION}_${NFPM_ARCH}.deb"
 
   NFPM_ARCH="$(get_nfpm_arch rpm "$ARCH")"
   nfpm_config="$(envsubst < ./ci/build/nfpm.yaml)"
   echo "Building rpm"
   echo "$nfpm_config" | head --lines=4
-  nfpm pkg -f <(echo "$nfpm_config") --target "release-packages/code-server-$VERSION-$NFPM_ARCH.rpm"
+  nfpm pkg -f <(echo "$nfpm_config") --target "release-packages/innovatex-ide-$VERSION-$NFPM_ARCH.rpm"
 }
 
 main "$@"

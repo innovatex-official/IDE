@@ -4,7 +4,7 @@ Our old marketplace only supports `serviceUrl` but this causes the marketplace
 to be disabled entirely so this moves the template var check to fix that.
 
 This also removes serverRootPath from the web extension route because that will
-include the commit.  When you update code-server (including this update) the web
+include the commit.  When you update innovatex-ide (including this update) the web
 extension will continue using the old path since it is stored in the browser but
 the path will 404 because the commit no longer matches.  This change is only to
 support current installations though because this patch also removes the
@@ -15,10 +15,10 @@ This can be tested by setting EXTENSIONS_GALLERY set to:
     '{"serviceUrl": "https://my-extensions/api"}'
 
 
-Index: code-server/lib/vscode/src/vs/platform/product/common/product.ts
+Index: innovatex-ide/lib/vscode/src/vs/platform/product/common/product.ts
 ===================================================================
---- code-server.orig/lib/vscode/src/vs/platform/product/common/product.ts
-+++ code-server/lib/vscode/src/vs/platform/product/common/product.ts
+--- innovatex-ide.orig/lib/vscode/src/vs/platform/product/common/product.ts
++++ innovatex-ide/lib/vscode/src/vs/platform/product/common/product.ts
 @@ -49,6 +49,17 @@ else if (globalThis._VSCODE_PRODUCT_JSON
  			version: pkg.version
  		});
@@ -37,10 +37,10 @@ Index: code-server/lib/vscode/src/vs/platform/product/common/product.ts
  }
  
  // Web environment or unknown
-Index: code-server/lib/vscode/src/vs/server/node/webClientServer.ts
+Index: innovatex-ide/lib/vscode/src/vs/server/node/webClientServer.ts
 ===================================================================
---- code-server.orig/lib/vscode/src/vs/server/node/webClientServer.ts
-+++ code-server/lib/vscode/src/vs/server/node/webClientServer.ts
+--- innovatex-ide.orig/lib/vscode/src/vs/server/node/webClientServer.ts
++++ innovatex-ide/lib/vscode/src/vs/server/node/webClientServer.ts
 @@ -327,7 +327,6 @@ export class WebClientServer {
  
  		const staticRoute = posix.join(basePath, this._productPath, STATIC_PATH);
@@ -65,10 +65,10 @@ Index: code-server/lib/vscode/src/vs/server/node/webClientServer.ts
  		};
  
  		const proposedApi = this._environmentService.args['enable-proposed-api'];
-Index: code-server/lib/vscode/src/vs/platform/extensionResourceLoader/common/extensionResourceLoader.ts
+Index: innovatex-ide/lib/vscode/src/vs/platform/extensionResourceLoader/common/extensionResourceLoader.ts
 ===================================================================
---- code-server.orig/lib/vscode/src/vs/platform/extensionResourceLoader/common/extensionResourceLoader.ts
-+++ code-server/lib/vscode/src/vs/platform/extensionResourceLoader/common/extensionResourceLoader.ts
+--- innovatex-ide.orig/lib/vscode/src/vs/platform/extensionResourceLoader/common/extensionResourceLoader.ts
++++ innovatex-ide/lib/vscode/src/vs/platform/extensionResourceLoader/common/extensionResourceLoader.ts
 @@ -15,7 +15,6 @@ import { getServiceMachineId } from '../
  import { IStorageService } from '../../storage/common/storage.js';
  import { TelemetryLevel } from '../../telemetry/common/telemetry.js';
@@ -90,10 +90,10 @@ Index: code-server/lib/vscode/src/vs/platform/extensionResourceLoader/common/ext
  	}
  
  }
-Index: code-server/lib/vscode/src/vs/platform/externalServices/common/marketplace.ts
+Index: innovatex-ide/lib/vscode/src/vs/platform/externalServices/common/marketplace.ts
 ===================================================================
---- code-server.orig/lib/vscode/src/vs/platform/externalServices/common/marketplace.ts
-+++ code-server/lib/vscode/src/vs/platform/externalServices/common/marketplace.ts
+--- innovatex-ide.orig/lib/vscode/src/vs/platform/externalServices/common/marketplace.ts
++++ innovatex-ide/lib/vscode/src/vs/platform/externalServices/common/marketplace.ts
 @@ -26,6 +26,10 @@ export async function resolveMarketplace
  		'User-Agent': `VSCode ${version} (${productService.nameShort})`
  	};

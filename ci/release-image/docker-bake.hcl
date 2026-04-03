@@ -7,21 +7,21 @@ variable "VERSION" {
 }
 
 variable "DOCKER_REGISTRY" {
-    default = "docker.io/codercom/code-server"
+    default = "docker.io/innovatexcom/innovatex-ide"
 }
 
 variable "GITHUB_REGISTRY" {
-    default = "ghcr.io/coder/code-server"
+    default = "ghcr.io/innovatex/innovatex-ide"
 }
 
 group "default" {
     targets = [
-        "code-server-debian-13",
-        "code-server-debian-12",
-        "code-server-ubuntu-focal",
-        "code-server-ubuntu-noble",
-        "code-server-fedora-39",
-        "code-server-opensuse-tumbleweed",
+        "innovatex-ide-debian-13",
+        "innovatex-ide-debian-12",
+        "innovatex-ide-ubuntu-focal",
+        "innovatex-ide-ubuntu-noble",
+        "innovatex-ide-fedora-39",
+        "innovatex-ide-opensuse-tumbleweed",
     ]
 }
 
@@ -49,7 +49,7 @@ function "gen_tags_for_docker_and_ghcr" {
     )
 }
 
-target "code-server-debian-13" {
+target "innovatex-ide-debian-13" {
     dockerfile = "ci/release-image/Dockerfile"
     tags = concat(
         gen_tags_for_docker_and_ghcr(""),
@@ -59,7 +59,7 @@ target "code-server-debian-13" {
     platforms = ["linux/amd64", "linux/arm64"]
 }
 
-target "code-server-debian-12" {
+target "innovatex-ide-debian-12" {
     dockerfile = "ci/release-image/Dockerfile"
     tags = concat(
         gen_tags_for_docker_and_ghcr("bookworm"),
@@ -70,7 +70,7 @@ target "code-server-debian-12" {
     platforms = ["linux/amd64", "linux/arm64"]
 }
 
-target "code-server-ubuntu-focal" {
+target "innovatex-ide-ubuntu-focal" {
     dockerfile = "ci/release-image/Dockerfile"
     tags = concat(
         gen_tags_for_docker_and_ghcr("ubuntu"),
@@ -82,7 +82,7 @@ target "code-server-ubuntu-focal" {
     platforms = ["linux/amd64", "linux/arm64"]
 }
 
-target "code-server-ubuntu-noble" {
+target "innovatex-ide-ubuntu-noble" {
     dockerfile = "ci/release-image/Dockerfile"
     tags = concat(
         gen_tags_for_docker_and_ghcr("noble"),
@@ -93,7 +93,7 @@ target "code-server-ubuntu-noble" {
     platforms = ["linux/amd64", "linux/arm64"]
 }
 
-target "code-server-fedora-39" {
+target "innovatex-ide-fedora-39" {
     dockerfile = "ci/release-image/Dockerfile.fedora"
     tags = concat(
         gen_tags_for_docker_and_ghcr("fedora"),
@@ -105,7 +105,7 @@ target "code-server-fedora-39" {
     platforms = ["linux/amd64", "linux/arm64"]
 }
 
-target "code-server-opensuse-tumbleweed" {
+target "innovatex-ide-opensuse-tumbleweed" {
     dockerfile = "ci/release-image/Dockerfile.opensuse"
     tags = concat(
         gen_tags_for_docker_and_ghcr("opensuse"),

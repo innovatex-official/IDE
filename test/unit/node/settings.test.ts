@@ -1,4 +1,4 @@
-import { logger } from "@coder/logger"
+import { logger } from "@innovatex/logger"
 import { promises as fs } from "fs"
 import path from "path"
 import { SettingsProvider, CoderSettings } from "../../../src/node/settings"
@@ -14,7 +14,7 @@ describe("settings", () => {
     testDir = await tmpdir(testName)
   })
   describe("with invalid JSON in settings file", () => {
-    const mockSettingsFile = "coder.json"
+    const mockSettingsFile = "innovatex.json"
     let pathToMockSettingsFile = ""
 
     beforeEach(async () => {

@@ -1,4 +1,4 @@
-import { logger } from "@coder/logger"
+import { logger } from "@innovatex/logger"
 import { readFile, writeFile, stat, utimes } from "fs/promises"
 import { Heart } from "../../../src/node/heart"
 import { clean, mockLogger, tmpdir } from "../../utils/helpers"

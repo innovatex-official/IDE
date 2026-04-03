@@ -19,7 +19,7 @@ body:
           - **Local OS**: macOS
           - **Remote OS**: Ubuntu
           - **Remote Architecture**: amd64
-          - **`code-server --version`**: 4.0.1
+          - **`innovatex-ide --version`**: 4.0.1
 
         Please do not just put "latest" for the version.
       value: |
@@ -27,7 +27,7 @@ body:
         - Local OS:
         - Remote OS:
         - Remote Architecture:
-        - `code-server --version`:
+        - `innovatex-ide --version`:
     validations:
       required: true
 
@@ -36,7 +36,7 @@ body:
       label: Steps to Reproduce
       description: |
         Please describe exactly how to reproduce the bug. For example:
-        1. Open code-server in Firefox
+        1. Open innovatex-ide in Firefox
         2. Install extension `foo.bar` from the extensions sidebar
         3. Run command `foo.bar.baz`
       value: |
@@ -64,7 +64,7 @@ body:
     id: logs
     attributes:
       label: Logs
-      description: Run code-server with the --verbose flag and then paste any relevant logs from the server, from the browser console and/or the browser network tab. For issues with installation, include installation logs (i.e. output of `npm install -g code-server`).
+      description: Run innovatex-ide with the --verbose flag and then paste any relevant logs from the server, from the browser console and/or the browser network tab. For issues with installation, include installation logs (i.e. output of `npm install -g innovatex-ide`).
       render: shell
 
   - type: textarea
@@ -112,8 +112,8 @@ body:
 
   - type: checkboxes
     attributes:
-      label: Are you accessing code-server over a secure context?
-      description: code-server relies on service workers (which only work in secure contexts) for many features. Double-check that you are using a secure context like HTTPS or localhost.
+      label: Are you accessing innovatex-ide over a secure context?
+      description: innovatex-ide relies on service workers (which only work in secure contexts) for many features. Double-check that you are using a secure context like HTTPS or localhost.
       options:
         - label: I am using a secure context.
           required: false

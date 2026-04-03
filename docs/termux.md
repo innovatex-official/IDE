@@ -22,8 +22,8 @@
 
 1. Get [Termux](https://f-droid.org/en/packages/com.termux/) from **F-Droid**.
 2. Run `pkg install tur-repo`
-3. Run `pkg install code-server`
-4. You can now start code server by simply running `code-server`.
+3. Run `pkg install innovatex-ide`
+4. You can now start code server by simply running `innovatex-ide`.
 
 ## NPM Installation
 
@@ -59,24 +59,24 @@ node -v
 
 you will get Node version `v22`
 
-5. Now install code-server following our guide on [installing with npm](./npm.md)
+5. Now install innovatex-ide following our guide on [installing with npm](./npm.md)
 
-6. Congratulation code-server is installed on your device using the following command.
+6. Congratulation innovatex-ide is installed on your device using the following command.
 
 ```sh
-code-server --auth none
+innovatex-ide --auth none
 ```
 
 7. If already installed then use the following command for upgradation.
 
 ```
-npm update --global code-server
+npm update --global innovatex-ide
 ```
 
 ## Upgrade
 
-1. Remove all previous installs `rm -rf ~/.local/lib/code-server-*`
-2. Run the install script again `curl -fsSL https://code-server.dev/install.sh | sh`
+1. Remove all previous installs `rm -rf ~/.local/lib/innovatex-ide-*`
+2. Run the install script again `curl -fsSL https://innovatex-ide.dev/install.sh | sh`
 
 ## Known Issues
 
@@ -91,7 +91,7 @@ Potential Workaround :
 
 ### Many extensions including language packs fail to install
 
-Issue: Android is not seen as a Linux environment but as a separate, unsupported platform, so code-server only allows [Web Extensions](https://code.visualstudio.com/api/extension-guides/web-extensions), refusing to download extensions that run on the server.\
+Issue: Android is not seen as a Linux environment but as a separate, unsupported platform, so innovatex-ide only allows [Web Extensions](https://code.visualstudio.com/api/extension-guides/web-extensions), refusing to download extensions that run on the server.\
 Fix: None\
 Potential workarounds :
 
@@ -112,10 +112,10 @@ Object.defineProperty(process, "platform", {
 })
 ```
 
-Then use Node's `--require` option to make sure it is loaded before `code-server` starts:
+Then use Node's `--require` option to make sure it is loaded before `innovatex-ide` starts:
 
 ```sh
-NODE_OPTIONS="--require /path/to/android-as-linux.js" code-server
+NODE_OPTIONS="--require /path/to/android-as-linux.js" innovatex-ide
 ```
 
 ⚠️ Note that Android and Linux are not 100% compatible, so use these workarounds at your own risk. Extensions that have native dependencies other than Node or that directly interact with the OS might cause issues.
