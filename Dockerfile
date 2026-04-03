@@ -9,6 +9,7 @@ WORKDIR /app
 ENV VSCODE_SKIP_NODE_VERSION_CHECK=1
 ENV NODE_OPTIONS="--experimental-strip-types --max-old-space-size=4096"
 ENV VERSION=1.0.0
+ENV SKIP_TEST_DEPS=1
 
 # Copy only what's needed for installation
 COPY package*.json .gitmodules ./

@@ -26,8 +26,10 @@ main() {
   cd "$(dirname "$0")/../.."
   source ./ci/lib.sh
 
-  install-deps test
-  install-deps test/e2e/extensions/test-extension
+  if [[ ! ${SKIP_TEST_DEPS-} ]]; then
+    install-deps test
+    install-deps test/e2e/extensions/test-extension
+  fi
   if [[ ! -f lib/vscode/package.json ]]; then
     echo "lib/vscode/package.json is missing; updating submodules..."
     git submodule update --init --recursive --depth 1
@@ -45,8 +47,13 @@ main() {
 
   if [[ ! ${SKIP_SUBMODULE_DEPS-} ]]; then
     # Fix all .ts scripts and gulp to use experimental-strip-types
-    sed -i '' 's/node \(build\/[a-zA-Z0-9\/._-]*\.ts\)/node --experimental-strip-types \1/g' lib/vscode/package.json
-    sed -i '' 's/node --max-old-space-size=8192/node --experimental-strip-types --max-old-space-size=8192/g' lib/vscode/package.json
+    if [[ "$OS" == "macos" ]]; then
+      sed -i '' 's/node \(build\/[a-zA-Z0-9\/._-]*\.ts\)/node --experimental-strip-types \1/g' lib/vscode/package.json
+      sed -i '' 's/node --max-old-space-size=8192/node --experimental-strip-types --max-old-space-size=8192/g' lib/vscode/package.json
+    else
+      sed -i 's/node \(build\/[a-zA-Z0-9\/._-]*\.ts\)/node --experimental-strip-types \1/g' lib/vscode/package.json
+      sed -i 's/node --max-old-space-size=8192/node --experimental-strip-types --max-old-space-size=8192/g' lib/vscode/package.json
+    fi
     export VSCODE_SKIP_NODE_VERSION_CHECK=1
     install-deps lib/vscode
   fi
