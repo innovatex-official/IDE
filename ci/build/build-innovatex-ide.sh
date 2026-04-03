@@ -6,7 +6,7 @@ set -euo pipefail
 main() {
   cd "$(dirname "${0}")/../.."
 
-  tsc
+  npx tsc
 
   # If out/node/entry.js does not already have the shebang,
   # we make sure to add it and make it executable.
